@@ -214,6 +214,13 @@
       transition: none;
     }
 
+    /* remove any accidental outlines */
+    .hotspot.show-outline,
+    .hotspot.editing {
+      border: none !important;
+      background: transparent !important;
+    }
+
     /* Mystery Mansion Hotspots */
     .room-mystery .hotspot.painting {
       left: 44.1667%;
@@ -1742,6 +1749,7 @@ document.addEventListener('keydown', enableAudioOnInteraction);
 </script>
 </body>
 </html>
+
 
 
 
