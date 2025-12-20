@@ -206,12 +206,19 @@
     /* ========== HOTSPOTS ========== */
     .hotspot {
       position: absolute;
-      background: rgba(255, 0, 0, 0.15);
-      border: none;
+      background: transparent !important;
+      border: none !important;
       cursor: pointer;
       z-index: 50;
       pointer-events: auto;
       transition: none;
+    }
+
+    /* remove any accidental outlines */
+    .hotspot.show-outline,
+    .hotspot.editing {
+      border: none !important;
+      background: transparent !important;
     }
 
     /* Mystery Mansion Hotspots */
@@ -853,12 +860,12 @@ button {
 
 <!-- Menu / Lobby Music -->
 <audio id="menuMusic" loop>
-  <source src="audio/mixkit-xanthos-633.mp3" type="audio/mpeg">
+  <source src="mixkit-xanthos-633.mp3" type="audio/mpeg">
 </audio>
 
 <!-- In-Room Music -->
 <audio id="roomMusic" loop>
-  <source src="audio/halloween-spooky-eerie-music-416618.mp3" type="audio/mpeg">
+  <source src="halloween-spooky-eerie-music-416618.mp3" type="audio/mpeg">
 </audio>
 <script>
 
@@ -1711,6 +1718,7 @@ function tryDoor() {
   }
 
   // ========== INITIALIZATION ==========
+// ========== INITIALIZATION ==========
 loadHotspots();
 renderRooms();
 updateInventory();
@@ -1738,7 +1746,16 @@ document.addEventListener('keydown', enableAudioOnInteraction);
   function selectHotspot() {}
   function nudgeSelected() {}
 
+  function toggleFilterMenu() {
+  const menu = document.getElementById('filterMenu');
+  menu.classList.toggle('hidden');
+}
+
 </script>
 </body>
 </html>
+
+
+
+
 
