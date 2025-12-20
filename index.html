@@ -1710,6 +1710,98 @@ function tryDoor() {
     showModal(lang.msgHowToPlay);
   }
 
+
+  // ========== DOOR MODAL FUNCTIONS ==========
+function openDoorModal() {
+  const modal = document.getElementById('doorModal');
+  modal.classList.remove('hidden');
+  modal.style.display = 'flex';
+  
+  // Build digit buttons from found digits
+  const buttonsDiv = document.getElementById('digitButtons');
+  buttonsDiv.innerHTML = '';
+  
+  // Create buttons for digits 0-9
+  for (let i = 0; i <= 9; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'digit';
+    btn.textContent = i;
+    
+    // Enable only if digit was found
+    if (state.foundDigits.includes(String(i))) {
+      btn.classList.add('digit-found');
+      btn.onclick = () => addDigitToCode(i);
+    } else {
+      btn.classList.add('digit-disabled');
+      btn.disabled = true;
+    }
+    
+    buttonsDiv.appendChild(btn);
+  }
+  
+  // Reset door entry
+  doorEntry = '';
+  updateCodeDisplay();
+}
+
+function closeDoorModal() {
+  const modal = document.getElementById('doorModal');
+  modal.classList.add('hidden');
+  modal.style.display = 'none';
+  doorEntry = '';
+}
+
+function addDigitToCode(digit) {
+  const lang = translations[currentLanguage];
+  if (doorEntry.length >= 3) {
+    showModal(lang.msgCodeIs3Digits);
+    return;
+  }
+  doorEntry += String(digit);
+  updateCodeDisplay();
+}
+
+function updateCodeDisplay() {
+  const display = document.getElementById('codeDisplay');
+  let displayText = '';
+  for (let i = 0; i < 3; i++) {
+    if (i < doorEntry.length) {
+      displayText += doorEntry[i] + ' ';
+    } else {
+      displayText += '_ ';
+    }
+  }
+  display.textContent = displayText.trim();
+}
+
+function clearDoorCode() {
+  doorEntry = '';
+  updateCodeDisplay();
+}
+
+function submitDoorCode() {
+  const lang = translations[currentLanguage];
+  
+  if (doorEntry.length !== 3) {
+    showModal(currentLanguage === 'en' 
+      ? 'Please enter a 3-digit code.' 
+      : 'Por favor ingresa un código de 3 dígitos.');
+    return;
+  }
+  
+  if (doorEntry === DOOR_CODE) {
+    doorUnlocked = true;
+    closeDoorModal();
+    showModal(currentLanguage === 'en'
+      ? '✅ Correct code! The door unlocks!'
+      : '✅ ¡Código correcto! ¡La puerta se abre!');
+    setTimeout(() => showScreen('victory'), 1500);
+  } else {
+    showModal(lang.msgIncorrectCode);
+    doorEntry = '';
+    updateCodeDisplay();
+  }
+}
   // ========== INITIALIZATION ==========
 // ========== INITIALIZATION ==========
 loadHotspots();
@@ -1742,3 +1834,4 @@ document.addEventListener('keydown', enableAudioOnInteraction);
 </script>
 </body>
 </html>
+
