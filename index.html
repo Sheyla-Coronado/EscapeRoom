@@ -1093,6 +1093,23 @@ button {
     updateLanguage();
   }
 
+  // ========== FILTER MENU ==========
+  function toggleFilterMenu() {
+    const menu = document.getElementById('filterMenu');
+    menu.classList.toggle('hidden');
+  }
+
+  // Close filter menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const filterMenu = document.getElementById('filterMenu');
+    const filterBtn = document.querySelector('.filter-btn');
+    const filterAnchor = document.querySelector('.filter-anchor');
+    
+    if (!filterAnchor.contains(e.target)) {
+      filterMenu.classList.add('hidden');
+    }
+  });
+  
  // ========== AUDIO SYSTEM ==========
   let audioEnabled = true;
   const menuMusic = document.getElementById("menuMusic");
@@ -1466,6 +1483,97 @@ function stopTimer() {
       });
   }
 
+    // ========== DOOR MODAL ==========
+  function openDoorModal() {
+    const modal = document.getElementById('doorModal');
+    const digitButtons = document.getElementById('digitButtons');
+    
+    // Clear previous buttons
+    digitButtons.innerHTML = '';
+    
+    // Create digit buttons 0-9
+    for (let i = 0; i <= 9; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'digit';
+      btn.textContent = i;
+      
+      // Check if this digit was found
+      if (state.foundDigits.includes(String(i))) {
+        btn.classList.add('digit-found');
+        btn.onclick = () => addDigitToEntry(i);
+      } else {
+        btn.classList.add('digit-disabled');
+        btn.disabled = true;
+      }
+      
+      digitButtons.appendChild(btn);
+    }
+    
+    // Reset entry
+    doorEntry = '';
+    updateDoorDisplay();
+    
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+  }
+
+  function closeDoorModal() {
+    const modal = document.getElementById('doorModal');
+    modal.classList.add('hidden');
+    modal.style.display = 'none';
+    doorEntry = '';
+  }
+
+  function addDigitToEntry(digit) {
+    if (doorEntry.length < 3) {
+      doorEntry += digit;
+      updateDoorDisplay();
+    }
+  }
+
+  function updateDoorDisplay() {
+    const display = document.getElementById('codeDisplay');
+    const filled = doorEntry.split('').join(' ');
+    const remaining = '_ '.repeat(3 - doorEntry.length).trim();
+    display.textContent = filled + (filled ? ' ' : '') + remaining;
+  }
+
+  function clearDoorCode() {
+    doorEntry = '';
+    updateDoorDisplay();
+  }
+
+  function submitDoorCode() {
+    const lang = translations[currentLanguage];
+    
+    if (doorEntry.length < 3) {
+      showModal(lang.msgCodeIs3Digits);
+      return;
+    }
+    
+    if (doorEntry === DOOR_CODE) {
+      doorUnlocked = true;
+      closeDoorModal();
+      const winMsg = currentLanguage === 'en' 
+        ? 'The door unlocks! You can escape!' 
+        : '¡La puerta se desbloquea! ¡Puedes escapar!';
+      showModal(winMsg);
+      setTimeout(() => showScreen('victory'), 1500);
+    } else {
+      showModal(lang.msgIncorrectCode);
+      doorEntry = '';
+      updateDoorDisplay();
+    }
+  }
+
+  // Hotspot editor placeholder functions (keep for compatibility)
+  function loadHotspots() {}
+  function saveHotspots() {}
+  function resetHotspots() {}
+  function toggleHotspotEditor() {}
+  function selectHotspot() {}
+  function nudgeSelected() {}
+
   // ========== ROOM LOADING ==========
 function loadRoom(roomName) {
   currentRoom = roomName;
@@ -1746,14 +1854,10 @@ document.addEventListener('keydown', enableAudioOnInteraction);
   function selectHotspot() {}
   function nudgeSelected() {}
 
-  function toggleFilterMenu() {
-  const menu = document.getElementById('filterMenu');
-  menu.classList.toggle('hidden');
-}
-
 </script>
 </body>
 </html>
+
 
 
 
