@@ -14,117 +14,69 @@
     }
 
     /* ========== BASE STYLES ========== */
-    * {
-      box-sizing: border-box;
-      font-family: system-ui, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .app {
-      max-width: 1100px;
-      margin: auto;
-      padding: 16px;
-    }
-
+    * { box-sizing: border-box; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: var(--bg); color: var(--text); }
+    .app { max-width: 1100px; margin: auto; padding: 16px; }
+    
     /* ========== BUTTONS ========== */
     button {
-      width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #000;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: 600;
+      width: 100%; padding: 14px; margin: 8px 0; border: none;
+      border-radius: 8px; background: var(--accent); color: #000;
+      font-size: 1rem; cursor: pointer; font-weight: 600;
     }
-
-    /* REMOVE HIGHLIGHTS FROM KEYPAD BUTTONS */
-    .digit {
-      padding: 15px; 
-      font-size: 1.2rem; 
-      border-radius: 5px; 
-      cursor: pointer;
-      border: 1px solid #555; 
-      background: #fff !important; /* Keep background white */
-      color: #000 !important;      /* Keep text black */
-      outline: none !important;    /* Remove blue focus outline */
-      -webkit-tap-highlight-color: transparent; /* Remove mobile tap tint */
-    }
-
-    .digit:active, .digit:focus {
-      background: #fff !important; /* Force no color change when clicked */
-      color: #000 !important;
-      outline: none !important;
-      box-shadow: none !important;
-    }
+    button.secondary { background: #444; color: #fff; }
 
     /* ========== SCREEN NAVIGATION ========== */
     .screen { display: none; }
     .screen.active { display: block; }
 
-    /* ========== ROOMS SCREEN ========== */
-    .rooms-topbar { display: flex; flex-direction: column; gap: 6px; }
-    .rooms-header { display: flex; align-items: center; justify-content: center; position: relative; }
-    .rooms-search { position: relative; display: flex; align-items: center; gap: 8px; justify-content: center; }
-    .back-btn { width: 28px; height: 28px; padding: 0; border-radius: 6px; background: #444; color: #fff; }
-    .search-input { flex: 1; max-width: 260px; padding: 8px 10px; border-radius: 6px; border: none; }
+    /* ========== ROOMS BROWSER ========== */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
     .card { background: var(--panel); border-radius: 10px; padding: 12px; }
-
-    /* ========== GAME SCREEN ========== */
     .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-    .game { background: var(--panel); border-radius: 12px; padding: 12px; }
+
+    /* ========== GAME VIEW ========== */
     .game-view {
       position: relative; width: 100%; aspect-ratio: 3 / 2; max-height: 66vh;
       border-radius: 10px; background-color: #111; overflow: hidden;
     }
-    .game-view img#sceneImage {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;
-    }
+    .game-view img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1; }
 
-    /* ========== HOTSPOTS (Invisible but show 'title' on hover) ========== */
+    /* ========== HOTSPOTS (Clues) ========== */
     .hotspot {
-      position: absolute;
-      background: rgba(255, 255, 255, 0) !important; /* Completely transparent */
-      border: none !important;
-      cursor: pointer;
-      z-index: 50;
-      outline: none !important;
+      position: absolute; background: transparent !important; border: none;
+      cursor: pointer; z-index: 50; outline: none;
     }
-
-    /* Hotspot Positions */
+    /* Positions */
     .room-mystery .hotspot.painting { left: 44%; top: 6%; width: 13%; height: 25%; }
     .room-mystery .hotspot.fireplace { left: 40%; top: 33%; width: 20%; height: 27%; }
-    .room-mystery .hotspot.door { left: 73%; top: 25%; width: 10%; height: 35%; z-index: 60; }
-    .room-mystery .hotspot.safe { left: 73%; top: 70%; width: 5%; height: 10%; z-index: 60; }
+    .room-mystery .hotspot.door { left: 73%; top: 25%; width: 10%; height: 35%; }
+    .room-mystery .hotspot.safe { left: 73%; top: 70%; width: 5%; height: 10%; }
     .room-mystery .hotspot.rug { left: 36%; top: 70%; width: 26%; height: 15%; }
     .room-mystery .hotspot.books { left: 20%; top: 53%; width: 6%; height: 15%; }
 
-    .room-asylum .hotspot.bed { left: 54%; top: 30%; width: 14%; height: 32%; }
-    .room-asylum .hotspot.tv { left: 35%; top: 59%; width: 12%; height: 18%; }
-    .room-asylum .hotspot.door { left: 83%; top: 8%; width: 15%; height: 50%; }
-
     /* ========== INVENTORY ========== */
-    .inventory { display: flex; align-items: center; gap: 12px; padding: 8px; background: rgba(0, 0, 0, 0.14); border-radius: 8px; margin-top: 8px; }
-    .inv-item, .clue-badge { width: 36px; height: 36px; border-radius: 6px; background: #fff; color: #111; display: flex; align-items: center; justify-content: center; }
+    .inventory { display: flex; gap: 12px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 8px; margin-top: 8px; }
+    .inv-item { width: 40px; height: 40px; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: bold; }
 
-    /* ========== DOOR KEYPAD ========== */
+    /* ========== KEYPAD (No Highlights) ========== */
     #codeDisplay {
       font-family: monospace; text-align: center; padding: 10px; background: #000;
-      color: var(--accent); border-radius: 8px; font-weight: 700; margin: 15px 0; letter-spacing: 10px; font-size: 26px;
+      color: var(--accent); border-radius: 8px; font-size: 26px; letter-spacing: 10px; margin-bottom: 15px;
     }
-    #digitButtons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    #digitButtons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+    
+    .digit {
+      padding: 15px; background: #222 !important; color: #fff !important;
+      border: 1px solid #444; border-radius: 6px; cursor: pointer; outline: none;
+    }
+    /* Force disabled and enabled buttons to look identical */
+    .digit:disabled { opacity: 1; cursor: default; }
+    .digit:active { background: #333 !important; }
 
     /* ========== MODALS ========== */
-    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1500; }
-    .modal-content { background: var(--panel); padding: 20px; border-radius: 12px; max-width: 320px; text-align: center; }
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000; }
+    .modal-content { background: var(--panel); padding: 20px; border-radius: 12px; text-align: center; width: 300px; }
     .hidden { display: none !important; }
   </style>
 </head>
@@ -133,91 +85,66 @@
 
   <section id="main" class="screen active">
     <h1>🔑 Escape Room</h1>
-    <button onclick="resumeGame()">▶ Current Room</button>
-    <button onclick="showScreen('rooms')">🌐 Browse Rooms</button>
+    <button onclick="showScreen('rooms')">Browse Rooms</button>
   </section>
 
   <section id="rooms" class="screen">
-    <div class="topbar rooms-topbar">
-      <div class="rooms-search">
-        <button class="back-btn" onclick="showScreen('main')">←</button>
-        <input id="search" class="search-input" placeholder="Search rooms" oninput="renderRooms()" />
-      </div>
-    </div>
-    <div id="roomGrid" class="grid" style="margin-top:12px"></div>
+    <div id="roomGrid" class="grid"></div>
   </section>
 
   <section id="game" class="screen">
     <div class="topbar">
-      <button onclick="pauseGame()" style="width:44px;background:#444;color:#fff;">☰</button>
+      <button onclick="showScreen('main')" style="width:50px">Back</button>
       <strong id="roomTitle">Room</strong>
       <span id="timer">05:00</span>
     </div>
-
-    <div class="game">
-      <div class="game-view" id="gameView">
-        <img id="sceneImage" src="" />
-
-        <div id="hotspotsMystery" class="hotspots-container">
-          <button class="hotspot books" title="Inspect books" onclick="interact('spot1')"></button>
-          <button class="hotspot painting" title="Inspect painting" onclick="interact('spot2')"></button>
-          <button class="hotspot fireplace" title="Inspect fireplace" onclick="interact('spot3')"></button>
-          <button class="hotspot rug" title="Lift rug" onclick="interact('spot4')"></button>
-          <button class="hotspot safe" title="Inspect safe" onclick="interact('spot5')"></button>
-          <button class="hotspot door" title="Try door" onclick="tryDoor()"></button>
-        </div>
-
-        <div id="hotspotsAsylum" class="hotspots-container hidden">
-          <button class="hotspot bed" title="Search bed" onclick="interact('spot1')"></button>
-          <button class="hotspot tv" title="Examine TV" onclick="interact('spot2')"></button>
-          <button class="hotspot door" title="Try door" onclick="tryDoor()"></button>
-        </div>
-      </div>
-
-      <div class="inventory">
-        <div class="inv-items" id="invItems"></div>
+    <div class="game-view" id="gameView">
+      <img id="sceneImage" src="" />
+      <div id="hotspotsMystery" class="hotspots-container">
+        <button class="hotspot books" title="Inspect books" onclick="interact('spot1')"></button>
+        <button class="hotspot painting" title="Inspect painting" onclick="interact('spot2')"></button>
+        <button class="hotspot fireplace" title="Inspect fireplace" onclick="interact('spot3')"></button>
+        <button class="hotspot rug" title="Lift rug" onclick="interact('spot4')"></button>
+        <button class="hotspot safe" title="Inspect safe" onclick="interact('spot5')"></button>
+        <button class="hotspot door" title="Try door" onclick="tryDoor()"></button>
       </div>
     </div>
+    <div class="inventory" id="invItems"></div>
   </section>
 
   <section id="victory" class="screen">
-    <h1>🎉 Escaped!</h1>
-    <button onclick="showScreen('rooms')">Back to Rooms</button>
+    <h1>🎉 You Escaped!</h1>
+    <button onclick="showScreen('main')">Main Menu</button>
   </section>
 </div>
 
 <div id="doorModal" class="modal">
   <div class="modal-content">
-    <h3>Keypad</h3>
+    <h3>Door Keypad</h3>
     <div id="codeDisplay">_ _ _</div>
     <div id="digitButtons"></div>
-    <div style="display:flex;gap:8px;">
-      <button onclick="submitDoorCode()" style="background:green;color:#fff;">Submit</button>
-      <button onclick="clearDoorCode()" style="background:#444;color:#fff;">Clear</button>
+    <div style="display:flex; gap:5px">
+      <button onclick="submitCode()" style="background:green; color:white">Submit</button>
+      <button onclick="clearCode()" style="background:#666; color:white">Clear</button>
     </div>
-    <button onclick="closeDoorModal()" style="background:none;border:1px solid #777;margin-top:10px;color:#fff;">Close</button>
-  </div>
-</div>
-
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <p id="modalText"></p>
-    <button onclick="closeModal()">OK</button>
+    <button onclick="closeKeypad()" style="background:none; color:gray; font-size:0.8rem">Close</button>
   </div>
 </div>
 
 <script>
-  const state = { inventory: [], foundDigits: [], time: 0, interval: null };
-  let currentRoom = 'Mystery Mansion';
-  let doorEntry = '';
+  const state = { foundDigits: [], currentEntry: '' };
+  let currentRoomData = null;
 
-  const roomsData = {
-    'Mystery Mansion': { hotspotsId: 'hotspotsMystery', image: 'foyer.jpg', time: 300, code: '042', clues: {
-      spot1: { number: 2, msg: 'Found 2!' }, spot2: { number: 0, msg: 'Found 0!' }, spot4: { number: 4, msg: 'Found 4!' }
-    }},
-    'Haunted Asylum': { hotspotsId: 'hotspotsAsylum', image: 'asylum.jpg', time: 420, code: '138', clues: {
-      spot1: { number: 1, msg: 'Found 1!' }, spot2: { number: 3, msg: 'Found 3!' }
-    }}
+  const rooms = {
+    'Mystery Mansion': {
+      image: 'images/foyer.jpg',
+      code: '042',
+      clues: {
+        spot1: { num: '2', msg: 'Found a 2!' },
+        spot2: { num: '0', msg: 'Found a 0!' },
+        spot4: { num: '4', msg: 'Found a 4!' }
+      }
+    }
   };
 
   function showScreen(id) {
@@ -226,72 +153,95 @@
   }
 
   function renderRooms() {
-    const grid = document.getElementById('roomGrid'); grid.innerHTML = '';
-    Object.keys(roomsData).forEach(name => {
-      const card = document.createElement('div'); card.className = 'card'; card.innerHTML = `<strong>${name}</strong>`;
-      const btn = document.createElement('button'); btn.textContent = 'Enter'; btn.onclick = () => loadRoom(name);
-      card.appendChild(btn); grid.appendChild(card);
+    const grid = document.getElementById('roomGrid');
+    Object.keys(rooms).forEach(name => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<strong>${name}</strong><br><button onclick="loadRoom('${name}')">Enter</button>`;
+      grid.appendChild(card);
     });
   }
 
   function loadRoom(name) {
-    currentRoom = name; const data = roomsData[name];
-    document.getElementById('sceneImage').src = data.image;
+    currentRoomData = rooms[name];
+    document.getElementById('sceneImage').src = currentRoomData.image;
     document.getElementById('roomTitle').textContent = name;
-    document.querySelectorAll('.hotspots-container').forEach(c => c.classList.add('hidden'));
-    document.getElementById(data.hotspotsId).classList.remove('hidden');
-    document.getElementById('gameView').className = 'game-view ' + (name === 'Mystery Mansion' ? 'room-mystery' : 'room-asylum');
-    state.time = data.time; state.foundDigits = []; updateInventory();
-    showScreen('game'); startTimer();
+    state.foundDigits = [];
+    updateInv();
+    showScreen('game');
   }
 
-  function interact(spotKey) {
-    const clue = roomsData[currentRoom].clues[spotKey]; if (!clue) return;
-    if (clue.number !== undefined && !state.foundDigits.includes(String(clue.number))) state.foundDigits.push(String(clue.number));
-    showModal(clue.msg); updateInventory();
+  function interact(key) {
+    const clue = currentRoomData.clues[key];
+    if (clue && !state.foundDigits.includes(clue.num)) {
+      state.foundDigits.push(clue.num);
+      alert(clue.msg);
+      updateInv();
+    }
+  }
+
+  function updateInv() {
+    const container = document.getElementById('invItems');
+    container.innerHTML = '';
+    state.foundDigits.forEach(d => {
+      const item = document.createElement('div');
+      item.className = 'inv-item';
+      item.textContent = d;
+      container.appendChild(item);
+    });
   }
 
   function tryDoor() {
-    if (state.foundDigits.length === 0) showModal("The door is locked. Find the code.");
-    else openDoorModal();
+    if (state.foundDigits.length === 0) {
+      alert("The door is locked.");
+      return;
+    }
+    openKeypad();
   }
 
-  function openDoorModal() {
-    doorEntry = ''; updateCodeDisplay();
-    const btnContainer = document.getElementById('digitButtons'); btnContainer.innerHTML = '';
-    state.foundDigits.sort().forEach(d => {
-      const btn = document.createElement('button'); 
-      btn.className = 'digit'; 
-      btn.textContent = d;
-      btn.onclick = () => { if (doorEntry.length < 3) { doorEntry += d; updateCodeDisplay(); }};
-      btnContainer.appendChild(btn);
-    });
+  function openKeypad() {
+    state.currentEntry = '';
+    updateDisplay();
+    const grid = document.getElementById('digitButtons');
+    grid.innerHTML = '';
+    
+    // Create 0-9 buttons. They all look identical.
+    for (let i = 0; i <= 9; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'digit';
+      btn.textContent = i;
+      // Only make them clickable if they were found
+      if (!state.foundDigits.includes(String(i))) {
+        btn.disabled = true;
+      } else {
+        btn.onclick = () => {
+          if (state.currentEntry.length < 3) {
+            state.currentEntry += i;
+            updateDisplay();
+          }
+        };
+      }
+      grid.appendChild(btn);
+    }
     document.getElementById('doorModal').style.display = 'flex';
   }
 
-  function updateCodeDisplay() { document.getElementById('codeDisplay').textContent = doorEntry.split('').join(' ').padEnd(5, ' _'); }
-  function submitDoorCode() { if (doorEntry === roomsData[currentRoom].code) { closeDoorModal(); showScreen('victory'); } else { showModal("Incorrect!"); clearDoorCode(); }}
-  function clearDoorCode() { doorEntry = ''; updateCodeDisplay(); }
-  function closeDoorModal() { document.getElementById('doorModal').style.display = 'none'; }
-  
-  function updateInventory() {
-    const container = document.getElementById('invItems'); container.innerHTML = '';
-    state.foundDigits.forEach(n => { const d = document.createElement('div'); d.className = 'clue-badge'; d.textContent = n; container.appendChild(d); });
+  function updateDisplay() {
+    document.getElementById('codeDisplay').textContent = state.currentEntry.padEnd(3, '_').split('').join(' ');
   }
 
-  function startTimer() {
-    clearInterval(state.interval);
-    state.interval = setInterval(() => {
-      state.time--; if (state.time <= 0) { clearInterval(state.interval); showScreen('main'); }
-      const m = Math.floor(state.time/60), s = state.time%60;
-      document.getElementById('timer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    }, 1000);
-  }
+  function clearCode() { state.currentEntry = ''; updateDisplay(); }
+  function closeKeypad() { document.getElementById('doorModal').style.display = 'none'; }
 
-  function pauseGame() { clearInterval(state.interval); showScreen('main'); }
-  function resumeGame() { if (document.getElementById('game').classList.contains('active')) startTimer(); showScreen('game'); }
-  function showModal(t) { document.getElementById('modalText').textContent = t; document.getElementById('modal').style.display = 'flex'; }
-  function closeModal() { document.getElementById('modal').style.display = 'none'; }
+  function submitCode() {
+    if (state.currentEntry === currentRoomData.code) {
+      closeKeypad();
+      showScreen('victory');
+    } else {
+      alert("Wrong code!");
+      clearCode();
+    }
+  }
 
   renderRooms();
 </script>
