@@ -869,18 +869,15 @@ button {
 </audio>
 <script>
 
-  // ========== LANGUAGE SYSTEM ==========
+// ========== LANGUAGE SYSTEM ==========
   let currentLanguage = 'en';
   
   const translations = {
     en: {
-      // Main Menu
       mainTitle: '🔑 Escape… if you can!',
       btnCurrentRoom: '▶ Current Room',
       btnBrowseRooms: '🌐 Browse Rooms',
       btnSettings: '⚙ Settings',
-      
-      // Rooms Browser
       roomsTitle: 'Escape Rooms',
       searchPlaceholder: 'Search rooms',
       optDifficulty: 'Difficulty',
@@ -892,14 +889,10 @@ button {
       optProgress: 'In Progress',
       optDone: 'Completed',
       btnEnter: 'Enter',
-      
-      // Victory
       victoryTitle: '🎉 You Escaped!',
       victoryText: 'You successfully completed the room!',
       btnBackToRooms: 'Back to Rooms',
       btnMainMenu: 'Main Menu',
-      
-      // Settings
       settingsTitle: 'Settings',
       btnAudioText: 'Audio',
       btnLanguageText: 'Language',
@@ -910,31 +903,21 @@ button {
       audioOff: 'Off',
       langEnglish: 'English',
       langSpanish: 'Spanish',
-      
-      // Pause Menu
       pauseTitle: 'Paused',
       btnResume: 'Resume',
       btnPauseSettings: 'Settings',
       btnQuit: 'Quit',
-      
-      // Door Modal
       doorModalTitle: 'Door Keypad',
       doorModalText: 'Enter the code by clicking the digits you have found',
       btnSubmit: 'Submit',
       btnClear: 'Clear',
       btnCloseDoor: 'Close',
-      
-      // General
       btnOK: 'OK',
       invLabel: 'Inventory',
-      
-      // Room names
       roomMysteryMansion: 'Mystery Mansion',
       roomMagicalLibrary: 'Magical Library',
       roomPirateCove: 'Pirate Cove',
       roomHauntedAsylum: 'Haunted Asylum',
-      
-      // Messages
       msgAlreadyFound: 'You already found this clue.',
       msgNothingElse: 'Nothing else remains here.',
       msgItemFound: 'You found a useful item!',
@@ -943,18 +926,15 @@ button {
       msgIncorrectCode: 'Incorrect code. Keep looking for clues!',
       msgCodeIs3Digits: 'Code is 3 digits. Clear to re-enter.',
       msgControls: 'Click on hotspots to interact with them. Find clues hidden around the room to unlock the door.',
-      msgHowToPlay: 'Find three number clues hidden around the room. Use them to unlock the door keypad and escape! Search different objects and locations.',
+      msgHowToPlay: 'Find three number clues hidden around the room. Use them to unlock the door keypad and escape!',
       msgHotspotSaved: 'Hotspot positions saved.',
       msgSelectHotspot: 'Select a hotspot first'
     },
     es: {
-      // Main Menu
       mainTitle: '🔑 ¡Escapa… si puedes!',
       btnCurrentRoom: '▶ Sala Actual',
       btnBrowseRooms: '🌐 Explorar Salas',
       btnSettings: '⚙ Configuración',
-      
-      // Rooms Browser
       roomsTitle: 'Salas de Escape',
       searchPlaceholder: 'Buscar salas',
       optDifficulty: 'Dificultad',
@@ -966,14 +946,10 @@ button {
       optProgress: 'En Progreso',
       optDone: 'Completado',
       btnEnter: 'Entrar',
-      
-      // Victory
       victoryTitle: '🎉 ¡Has Escapado!',
       victoryText: '¡Has completado la sala exitosamente!',
       btnBackToRooms: 'Volver a Salas',
       btnMainMenu: 'Menú Principal',
-      
-      // Settings
       settingsTitle: 'Configuración',
       btnAudioText: 'Audio',
       btnLanguageText: 'Idioma',
@@ -984,31 +960,21 @@ button {
       audioOff: 'Desactivado',
       langEnglish: 'Inglés',
       langSpanish: 'Español',
-      
-      // Pause Menu
       pauseTitle: 'Pausado',
       btnResume: 'Reanudar',
       btnPauseSettings: 'Configuración',
       btnQuit: 'Salir',
-      
-      // Door Modal
       doorModalTitle: 'Teclado de Puerta',
       doorModalText: 'Ingresa el código haciendo clic en los dígitos que encontraste',
       btnSubmit: 'Enviar',
       btnClear: 'Borrar',
       btnCloseDoor: 'Cerrar',
-      
-      // General
       btnOK: 'OK',
       invLabel: 'Inventario',
-      
-      // Room names
       roomMysteryMansion: 'Mansión Misteriosa',
       roomMagicalLibrary: 'Biblioteca Mágica',
       roomPirateCove: 'Cala de Piratas',
       roomHauntedAsylum: 'Asilo Embrujado',
-      
-      // Messages
       msgAlreadyFound: 'Ya encontraste esta pista.',
       msgNothingElse: 'No queda nada más aquí.',
       msgItemFound: '¡Encontraste un objeto útil!',
@@ -1016,8 +982,8 @@ button {
       msgDoorUnlocked: 'La puerta ya está desbloqueada.',
       msgIncorrectCode: '¡Código incorrecto! Sigue buscando pistas.',
       msgCodeIs3Digits: 'El código tiene 3 dígitos. Borra para volver a ingresar.',
-      msgControls: 'Haz clic en los puntos de interés para interactuar con ellos. Encuentra pistas escondidas en la sala para desbloquear la puerta.',
-      msgHowToPlay: '¡Encuentra tres pistas numéricas escondidas en la sala. Úsalas para desbloquear el teclado de la puerta y escapar! Busca en diferentes objetos y ubicaciones.',
+      msgControls: 'Haz clic en los puntos de interés para interactuar con ellos.',
+      msgHowToPlay: '¡Encuentra tres pistas numéricas escondidas en la sala. Úsalas para desbloquear el teclado!',
       msgHotspotSaved: 'Posiciones de puntos guardadas.',
       msgSelectHotspot: 'Selecciona un punto primero'
     }
@@ -1025,14 +991,10 @@ button {
 
   function updateLanguage() {
     const lang = translations[currentLanguage];
-    
-    // Main Menu
     document.getElementById('mainTitle').textContent = lang.mainTitle;
     document.getElementById('btnCurrentRoom').textContent = lang.btnCurrentRoom;
     document.getElementById('btnBrowseRooms').textContent = lang.btnBrowseRooms;
     document.getElementById('btnSettings').textContent = lang.btnSettings;
-    
-    // Rooms Browser
     document.getElementById('roomsTitle').textContent = lang.roomsTitle;
     document.getElementById('search').placeholder = lang.searchPlaceholder;
     document.getElementById('optDifficulty').textContent = lang.optDifficulty;
@@ -1043,45 +1005,29 @@ button {
     document.getElementById('optNew').textContent = lang.optNew;
     document.getElementById('optProgress').textContent = lang.optProgress;
     document.getElementById('optDone').textContent = lang.optDone;
-    
-    // Victory
     document.getElementById('victoryTitle').textContent = lang.victoryTitle;
     document.getElementById('victoryText').textContent = lang.victoryText;
     document.getElementById('btnBackToRooms').textContent = lang.btnBackToRooms;
     document.getElementById('btnMainMenu').textContent = lang.btnMainMenu;
-    
-    // Settings
     document.getElementById('settingsTitle').textContent = lang.settingsTitle;
     document.getElementById('btnAudioText').textContent = lang.btnAudioText;
     document.getElementById('btnLanguageText').textContent = lang.btnLanguageText;
     document.getElementById('btnControlsText').textContent = lang.btnControlsText;
     document.getElementById('btnHelpText').textContent = lang.btnHelpText;
     document.getElementById('btnClose').textContent = lang.btnClose;
-    
-    // Pause Menu
     document.getElementById('pauseTitle').textContent = lang.pauseTitle;
     document.getElementById('btnResume').textContent = lang.btnResume;
     document.getElementById('btnPauseSettings').textContent = lang.btnPauseSettings;
     document.getElementById('btnQuit').textContent = lang.btnQuit;
-    
-    // Door Modal
     document.getElementById('doorModalTitle').textContent = lang.doorModalTitle;
     document.getElementById('doorModalText').textContent = lang.doorModalText;
     document.getElementById('btnSubmit').textContent = lang.btnSubmit;
     document.getElementById('btnClear').textContent = lang.btnClear;
     document.getElementById('btnCloseDoor').textContent = lang.btnCloseDoor;
-    
-    // General
     document.getElementById('btnOK').textContent = lang.btnOK;
     document.getElementById('invLabel').textContent = lang.invLabel;
-    
-    // Update language status
     document.getElementById('langStatus').textContent = currentLanguage === 'en' ? lang.langEnglish : lang.langSpanish;
-    
-    // Re-render rooms to update room names
     renderRooms();
-    
-    // Update room title if in game
     const roomData = roomsData[currentRoom];
     if (roomData) {
       document.getElementById('roomTitle').textContent = currentLanguage === 'en' ? roomData.titleEN : roomData.titleES;
@@ -1093,24 +1039,7 @@ button {
     updateLanguage();
   }
 
-  // ========== FILTER MENU ==========
-  function toggleFilterMenu() {
-    const menu = document.getElementById('filterMenu');
-    menu.classList.toggle('hidden');
-  }
-
-  // Close filter menu when clicking outside
-  document.addEventListener('click', (e) => {
-    const filterMenu = document.getElementById('filterMenu');
-    const filterBtn = document.querySelector('.filter-btn');
-    const filterAnchor = document.querySelector('.filter-anchor');
-    
-    if (!filterAnchor.contains(e.target)) {
-      filterMenu.classList.add('hidden');
-    }
-  });
-  
- // ========== AUDIO SYSTEM ==========
+  // ========== AUDIO SYSTEM ==========
   let audioEnabled = true;
   const menuMusic = document.getElementById("menuMusic");
   const roomMusic = document.getElementById("roomMusic");
@@ -1118,8 +1047,7 @@ button {
   function toggleAudio() {
     audioEnabled = !audioEnabled;
     const lang = translations[currentLanguage];
-    document.getElementById('audioStatus').textContent =
-      audioEnabled ? lang.audioOn : lang.audioOff;
+    document.getElementById('audioStatus').textContent = audioEnabled ? lang.audioOn : lang.audioOff;
     if (audioEnabled) playMenuMusic();
     else { menuMusic.pause(); roomMusic.pause(); }
   }
@@ -1140,11 +1068,6 @@ button {
     if (roomMusic.paused) roomMusic.play().catch(()=>{});
   }
 
-  // Autoplay menu music on page load
-  window.addEventListener('DOMContentLoaded', () => {
-    playMenuMusic();
-  });
-
   // ========== DATA & STATE ==========
   const roomsData = {
     'Mystery Mansion': {
@@ -1152,40 +1075,15 @@ button {
       titleES: 'Mansión Misteriosa — Vestíbulo',
       className: 'room-mystery',
       hotspotsId: 'hotspotsMysterv',
-      image: 'foyer.jpg', 
+      image: 'images/foyer.jpg', 
       time: 300,
       code: '042',
       clues: {
-        spot1: { 
-          number: 2, 
-          found: false, 
-          messageEN: 'You found a number hidden inside an old book!',
-          messageES: '¡Encontraste un número escondido dentro de un libro viejo!'
-        },
-        spot2: { 
-          number: 0, 
-          found: false, 
-          messageEN: 'Behind the painting, a number is scratched into the wall!',
-          messageES: '¡Detrás de la pintura, un número está grabado en la pared!'
-        },
-        spot3: { 
-          item: '🧩', 
-          found: false, 
-          messageEN: 'You find a metal code plate in the fireplace ashes! Looks like it might be useful',
-          messageES: '¡Encuentras una placa de código metálica en las cenizas de la chimenea! Parece que pueda ser importante'
-        },
-        spot4: { 
-          number: 4, 
-          found: false, 
-          messageEN: 'Under the rug, you discover a number carved into the floor!',
-          messageES: '¡Bajo la alfombra, descubres un número tallado en el suelo!'
-        },
-        spot5: { 
-          item: '🔐', 
-          found: false, 
-          messageEN: 'The safe opens! Inside is a brass bolt.',
-          messageES: '¡La caja fuerte se abre! Dentro hay un perno de latón.'
-        }
+        spot1: { number: 2, found: false, messageEN: 'You found a number hidden inside an old book!', messageES: '¡Encontraste un número escondido dentro de un libro viejo!' },
+        spot2: { number: 0, found: false, messageEN: 'Behind the painting, a number is scratched into the wall!', messageES: '¡Detrás de la pintura, un número está grabado en la pared!' },
+        spot3: { item: '🧩', found: false, messageEN: 'You find a metal code plate! Might be useful for the safe.', messageES: '¡Encuentras una placa de código metálica! Útil para la caja fuerte.' },
+        spot4: { number: 4, found: false, messageEN: 'Under the rug, you discover a number carved into the floor!', messageES: '¡Bajo la alfombra, descubres un número tallado en el suelo!' },
+        spot5: { item: '🔐', found: false, messageEN: 'The safe opens! Inside is a heavy brass key.', messageES: '¡La caja fuerte se abre! Dentro hay una llave de latón.' }
       }
     },
     'Magical Library': {
@@ -1193,133 +1091,52 @@ button {
       titleES: 'Biblioteca Mágica — Sala de Lectura',
       className: 'room-library',
       hotspotsId: 'hotspotsLibrary',
-      image: 'library.png',
+      image: 'images/library.png',
       time: 240,
       code: 'none',
       requiresItems: ['🔮', '🕯️', '📜'],
       clues: {
-        spot1: { 
-          item: '🔮', 
-          found: false, 
-          messageEN: 'The crystal ball pulses with magical energy! It might unlock something...',
-          messageES: '¡La bola de cristal pulsa con energía mágica! Podría desbloquear algo...'
-        },
-        spot2: { 
-          item: '📚', 
-          found: false, 
-          messageEN: 'You find an ancient tome about secret passages in magical libraries!',
-          messageES: '¡Encuentras un tomo antiguo sobre pasajes secretos en bibliotecas mágicas!'
-        },
-        spot3: { 
-          item: '🕯️', 
-          found: false, 
-          messageEN: 'An enchanted candle! Its flame reveals hidden truths.',
-          messageES: '¡Una vela encantada! Su llama revela verdades ocultas.'
-        },
-        spot4: { 
-          item: '📜', 
-          found: false, 
-          messageEN: 'A mystical scroll with strange symbols that seem to point toward the bookshelf...',
-          messageES: 'Un pergamino místico con símbolos extraños que parecen apuntar hacia la estantería...'
-        },
-        spot5: { 
-          item: '✨', 
-          found: false, 
-          messageEN: 'A vial of stardust! Pure magical essence.',
-          messageES: '¡Un frasco de polvo de estrellas! Esencia mágica pura.'
-        }
+        spot1: { item: '🔮', found: false, messageEN: 'The crystal ball pulses with energy!', messageES: '¡La bola de cristal pulsa con energía!' },
+        spot2: { item: '📚', found: false, messageEN: 'You find an ancient book about secret doors.', messageES: 'Encuentras un libro antiguo sobre puertas secretas.' },
+        spot3: { item: '🕯️', found: false, messageEN: 'An enchanted candle!', messageES: '¡Una vela encantada!' },
+        spot4: { item: '📜', found: false, messageEN: 'A mystical scroll with symbols.', messageES: 'Un pergamino místico con símbolos.' },
+        spot5: { item: '✨', found: false, messageEN: 'A vial of stardust!', messageES: '¡Un frasco de polvo de estrellas!' }
       }
     },
-'Pirate Cove': {
-  titleEN: 'Pirate Cove — Captain\'s Quarters',
-  titleES: 'Cala de Piratas — Camarote del Capitán',
-  className: 'room-pirate',
-  hotspotsId: 'hotspotsPirate',
-  image: 'pirate.jpg',
-  time: 360,
-  code: 'treasure',
-  requiresItems: ['🗺️', '⚓', '🧭', '🗝️'],
-  clues: {
-    spot1: { 
-      item: '🗺️', 
-      found: false, 
-      messageEN: 'An old treasure map showing an X marked on the beach!',
-      messageES: '¡Un viejo mapa del tesoro mostrando una X marcada en la playa!'
+    'Pirate Cove': {
+      titleEN: 'Pirate Cove — Captain\'s Quarters',
+      titleES: 'Cala de Piratas — Camarote del Capitán',
+      className: 'room-pirate',
+      hotspotsId: 'hotspotsPirate',
+      image: 'images/pirate.jpg',
+      time: 360,
+      code: 'treasure',
+      requiresItems: ['🗺️', '⚓', '🧭', '🗝️'],
+      clues: {
+        spot1: { item: '🗺️', found: false, messageEN: 'An old treasure map!', messageES: '¡Un viejo mapa del tesoro!' },
+        spot2: { item: '🍺', found: false, messageEN: 'A bottle of rum.', messageES: 'Una botella de ron.' },
+        spot3: { item: '🧭', found: false, messageEN: 'A compass hidden in a crate!', messageES: '¡Una brújula en una caja!' },
+        spot4: { item: '⚓', found: false, messageEN: 'A golden anchor medallion!', messageES: '¡Un medallón de ancla dorado!' },
+        spot5: { item: '🗝️', found: false, messageEN: 'A rusty key hidden in driftwood!', messageES: '¡Una llave oxidada en la madera!' }
+      }
     },
-    spot2: { 
-      item: '🍺', 
-      found: false, 
-      messageEN: 'A bottle of ancient rum hidden in the barrel!',
-      messageES: '¡Una botella de ron antiguo escondida en el barril!'
-    },
-    spot3: { 
-      item: '🧭', 
-      found: false, 
-      messageEN: 'A compass hidden in a crate! It points toward the beach.',
-      messageES: '¡Una brújula escondida en una caja! Apunta hacia la playa.'
-    },
-    spot4: { 
-      item: '⚓', 
-      found: false, 
-      messageEN: 'A golden anchor medallion buried in the sand near the fire!',
-      messageES: '¡Un medallón de ancla dorado enterrado en la arena cerca del fuego!'
-    },
-    spot5: { 
-      item: '🗝️', 
-      found: false, 
-      messageEN: 'A rusty key hidden beneath some driftwood! This must unlock the treasure.',
-      messageES: '¡Una llave oxidada escondida bajo madera flotante! Esto debe abrir el tesoro.'
-    },
-    spot6: {
-      treasure: true,
-      found: false,
-      messageEN: 'The buried treasure location...',
-      messageES: 'La ubicación del tesoro enterrado...'
+    'Haunted Asylum': {
+      titleEN: 'Haunted Asylum — Abandoned Ward',
+      titleES: 'Asilo Embrujado — Pabellón Abandonado',
+      className: 'room-asylum',
+      hotspotsId: 'hotspotsAsylum',
+      image: 'images/asylum.jpg',
+      time: 420,
+      code: '138',
+      clues: {
+        spot1: { number: 1, found: false, messageEN: 'You find patient record #1.', messageES: 'Encuentras el registro de paciente #1.' },
+        spot2: { item: '📺', found: false, messageEN: 'The TV flickers static.', messageES: 'La TV parpadea estática.' },
+        spot3: { number: 3, found: false, messageEN: 'The number 3 is written on the TV.', messageES: 'El número 3 está escrito en la TV.' },
+        spot4: { item: '💊', found: false, messageEN: 'Old medicine bottles.', messageES: 'Viejos frascos de medicina.' },
+        spot5: { number: 8, found: false, messageEN: 'Scratched marks counting to 8.', messageES: 'Marcas que cuentan hasta 8.' }
+      }
     }
-  }
-},
-'Haunted Asylum': {
-  titleEN: 'Haunted Asylum — Abandoned Ward',
-  titleES: 'Asilo Embrujado — Pabellón Abandonado',
-  className: 'room-asylum',
-  hotspotsId: 'hotspotsAsylum',
-  image: 'asylum.jpg',
-  time: 420,
-  code: '138',
-  clues: {
-    spot1: { 
-      number: 1, 
-      found: false, 
-      messageEN: 'Under the stained mattress, you find a patient record with the number 1 circled in red ink...',
-      messageES: 'Bajo el colchón manchado, encuentras un registro de paciente con el número 1 circulado en tinta roja...'
-    },
-    spot2: { 
-      item: '📺', 
-      found: false, 
-      messageEN: 'The old TV flickers to life briefly, showing static and a strange symbol...',
-      messageES: 'El viejo televisor parpadea brevemente, mostrando estática y un símbolo extraño...'
-    },
-    spot3: { 
-      number: 3, 
-      found: false, 
-      messageEN: 'The paper on top of the TV has patient notes... the number 3 is written repeatedly.',
-      messageES: 'El papel encima del televisor tiene notas de paciente... el número 3 está escrito repetidamente.'
-    },
-    spot4: { 
-      item: '💊', 
-      found: false, 
-      messageEN: 'The first-aid box contains old medicine bottles and syringes. One bottle glows faintly...',
-      messageES: 'El botiquín contiene viejos frascos de medicina y jeringas. Un frasco brilla débilmente...'
-    },
-    spot5: { 
-      number: 8, 
-      found: false, 
-      messageEN: 'Behind the rusty pipe, you find scratched marks counting to 8...',
-      messageES: 'Detrás del tubo oxidado, encuentras marcas rayadas contando hasta 8...'
-    }
-  }
-}
-};
+  };
 
   const rooms = [
     { name: 'Mystery Mansion', difficulty: 'Medium', status: 'progress' },
@@ -1332,6 +1149,10 @@ button {
   let interval = null;
   let paused = true;
   let currentRoom = 'Mystery Mansion';
+  let doorEntry = '';
+  let doorUnlocked = false;
+  let DOOR_CODE = '042';
+  let clues = roomsData['Mystery Mansion'].clues;
 
   const state = {
     inventory: [],
@@ -1339,95 +1160,162 @@ button {
     selectedItem: null
   };
 
-  let DOOR_CODE = '042';
-  let clues = roomsData['Mystery Mansion'].clues;
-
-  
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-
-  // Handle music based on screen
-  if (id === 'main' || id === 'rooms' || id === 'settings' || id === 'victory') {
-    playMenuMusic();
-  } else if (id === 'game') {
-    playRoomMusic();
+  // ========== CORE NAVIGATION ==========
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if (['main', 'rooms', 'settings', 'victory'].includes(id)) playMenuMusic();
+    else if (id === 'game') playRoomMusic();
   }
 
-}
-
-// Call this whenever you actually enter a room
-function enterRoom(roomName, roomTime) {
-  currentRoom = roomName;
-  time = roomTime;
-  paused = false;
-
-  showScreen('game');
-  startTimer();
-  playRoomMusic();
-}
-
-// Call this whenever you leave a room back to menu/screens
-function leaveRoom() {
-  stopTimer();
-  paused = true;
-  showScreen('main');
-  playMenuMusic();
-}
-
-function pauseGame() {
-  paused = true;
-  stopTimer();
-
-  document.getElementById('game').classList.add('paused');
-  document.getElementById('menuOverlay').style.display = 'flex';
-}
-
-function resumeGame() {
-  if (!currentRoom) {
-    // If no current room, load the default room (Mystery Mansion)
-    loadRoom('Mystery Mansion');
-    return;
-  }
-
-  closeMenu();
-  document.getElementById('game').classList.remove('paused');
-  showScreen('game');
-
-  if (paused) {
+  function loadRoom(roomName) {
+    currentRoom = roomName;
+    const roomData = roomsData[roomName];
+    document.getElementById('sceneImage').src = roomData.image;
+    time = roomData.time;
+    DOOR_CODE = roomData.code;
+    clues = roomData.clues;
     paused = false;
+    document.getElementById('roomTitle').textContent = currentLanguage === 'en' ? roomData.titleEN : roomData.titleES;
+    document.getElementById('gameView').className = 'game-view ' + roomData.className;
+    document.querySelectorAll('.hotspots-container').forEach(c => c.classList.add('hidden'));
+    document.getElementById(roomData.hotspotsId).classList.remove('hidden');
+    state.inventory = [];
+    state.foundDigits = [];
+    state.selectedItem = null;
+    doorUnlocked = false;
+    doorEntry = '';
+    Object.keys(clues).forEach(k => clues[k].found = false);
+    updateInventory();
+    showScreen('game');
     startTimer();
   }
 
-  playRoomMusic();
-}
+  function pauseGame() {
+    paused = true;
+    stopTimer();
+    document.getElementById('game').classList.add('paused');
+    document.getElementById('menuOverlay').style.display = 'flex';
+  }
 
-function closeMenu() {
-  document.getElementById('menuOverlay').style.display = 'none';
-}
+  function resumeGame() {
+    closeMenu();
+    document.getElementById('game').classList.remove('paused');
+    showScreen('game');
+    if (paused) { paused = false; startTimer(); }
+  }
 
-// Timer helpers
-function startTimer() {
-  clearInterval(interval);
-  interval = setInterval(() => {
-    if (time <= 0) {
-      clearInterval(interval);
-      alert("Time's up!");
-      leaveRoom();
+  function closeMenu() { document.getElementById('menuOverlay').style.display = 'none'; }
+
+  function startTimer() {
+    clearInterval(interval);
+    interval = setInterval(() => {
+      if (time <= 0) { clearInterval(interval); alert("Time's up!"); showScreen('main'); return; }
+      time--;
+      const m = String(Math.floor(time / 60)).padStart(2, '0');
+      const s = String(time % 60).padStart(2, '0');
+      document.getElementById('timer').textContent = `${m}:${s}`;
+    }, 1000);
+  }
+  function stopTimer() { clearInterval(interval); }
+
+  // ========== INTERACTIONS ==========
+  function interact(spotKey) {
+    const clue = clues[spotKey];
+    if (!clue) return;
+    if (clue.found) { showModal(translations[currentLanguage].msgNothingElse); return; }
+
+    // Mystery Mansion Safe Logic
+    if (spotKey === 'spot5' && currentRoom === 'Mystery Mansion' && !state.inventory.includes('🧩')) {
+      showModal(currentLanguage === 'en' ? 'The safe is locked. You need a code plate.' : 'La caja fuerte está cerrada.');
       return;
     }
-    time--;
-    const m = String(Math.floor(time / 60)).padStart(2, '0');
-    const s = String(time % 60).padStart(2, '0');
-    document.getElementById('timer').textContent = `${m}:${s}`;
-  }, 1000);
-}
 
-function stopTimer() {
-  clearInterval(interval);
-}
+    clue.found = true;
+    if (clue.number !== undefined) {
+      state.foundDigits.push(String(clue.number));
+    } else if (clue.item) {
+      state.inventory.push(clue.item);
+    }
+    updateInventory();
+    showModal(currentLanguage === 'en' ? clue.messageEN : clue.messageES);
+  }
 
-  // ========== ROOMS LIST ==========
+  function tryDoor() {
+    const lang = translations[currentLanguage];
+    const roomData = roomsData[currentRoom];
+
+    // Room Exit Logic
+    if (currentRoom === 'Magical Library') {
+      const hasAll = roomData.requiresItems.every(i => state.inventory.includes(i));
+      if (!hasAll) { showModal(currentLanguage === 'en' ? 'The bookshelf won\'t move. Collect the Crystal, Candle, and Scroll.' : 'La estantería no se mueve.'); return; }
+      winRoom();
+    } else if (currentRoom === 'Pirate Cove') {
+      const hasAll = roomData.requiresItems.every(i => state.inventory.includes(i));
+      if (!hasAll) { showModal(currentLanguage === 'en' ? 'You need the Map, Anchor, Compass, and Key to find the treasure.' : 'Necesitas los objetos del pirata.'); return; }
+      winRoom();
+    } else {
+      // Keypad Rooms
+      if (doorUnlocked) winRoom();
+      else if (state.foundDigits.length === 0) showModal(lang.msgNeedNumbers);
+      else openDoorModal();
+    }
+  }
+
+  function winRoom() {
+    showScreen('victory');
+    stopTimer();
+  }
+
+  // ========== KEYPAD MODAL ==========
+  function openDoorModal() {
+    const modal = document.getElementById('doorModal');
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+    doorEntry = '';
+    updateCodeDisplay();
+    renderDigitButtons();
+  }
+
+  function closeDoorModal() {
+    document.getElementById('doorModal').style.display = 'none';
+  }
+
+  function renderDigitButtons() {
+    const container = document.getElementById('digitButtons');
+    container.innerHTML = '';
+    for (let i = 0; i <= 9; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'digit';
+      btn.textContent = i;
+      if (!state.foundDigits.includes(String(i))) {
+        btn.classList.add('digit-disabled');
+        btn.disabled = true;
+      } else {
+        btn.onclick = () => { if (doorEntry.length < 3) { doorEntry += i; updateCodeDisplay(); }};
+      }
+      container.appendChild(btn);
+    }
+  }
+
+  function updateCodeDisplay() {
+    document.getElementById('codeDisplay').textContent = doorEntry.padEnd(3, '_').split('').join(' ');
+  }
+
+  function clearDoorCode() { doorEntry = ''; updateCodeDisplay(); }
+
+  function submitDoorCode() {
+    if (doorEntry === DOOR_CODE) {
+      doorUnlocked = true;
+      closeDoorModal();
+      showModal(currentLanguage === 'en' ? 'Correct! The door is open.' : '¡Correcto!');
+    } else {
+      showModal(translations[currentLanguage].msgIncorrectCode);
+      clearDoorCode();
+    }
+  }
+
+  // ========== UI UPDATES ==========
   function renderRooms() {
     const grid = document.getElementById('roomGrid');
     grid.innerHTML = '';
@@ -1436,427 +1324,57 @@ function stopTimer() {
     const st = document.getElementById('status').value;
     const lang = translations[currentLanguage];
 
-    rooms
-      .filter(r =>
-        (!s || r.name.toLowerCase().includes(s)) &&
-        (!d || r.difficulty === d) &&
-        (!st || r.status === st)
-      )
+    rooms.filter(r => (!s || r.name.toLowerCase().includes(s)) && (!d || r.difficulty === d) && (!st || r.status === st))
       .forEach(r => {
         const c = document.createElement('div');
         c.className = 'card';
-        
-        // Get translated room name
-        let roomName = r.name;
-        if (currentLanguage === 'es') {
-          const roomKey = 'room' + r.name.replace(/\s+/g, '');
-          roomName = lang[roomKey] || r.name;
-        }
-        
-        // Get translated difficulty
-        let difficultyText = r.difficulty;
-        if (currentLanguage === 'es') {
-          if (r.difficulty === 'Easy') difficultyText = lang.optEasy;
-          else if (r.difficulty === 'Medium') difficultyText = lang.optMedium;
-          else if (r.difficulty === 'Hard') difficultyText = lang.optHard;
-        }
-        
-        // Get translated status
-        let statusText = r.status;
-        if (currentLanguage === 'es') {
-          if (r.status === 'new') statusText = lang.optNew;
-          else if (r.status === 'progress') statusText = lang.optProgress;
-          else if (r.status === 'done') statusText = lang.optDone;
-        }
-        
-        const difficultyLabel = currentLanguage === 'es' ? 'Dificultad' : 'Difficulty';
-        const statusLabel = currentLanguage === 'es' ? 'Estado' : 'Status';
-        
-        c.innerHTML = `<strong>${roomName}</strong><br>${difficultyLabel}: ${difficultyText}<br>${statusLabel}: ${statusText}`;
+        const name = currentLanguage === 'es' ? (lang['room' + r.name.replace(/\s+/g, '')] || r.name) : r.name;
+        c.innerHTML = `<strong>${name}</strong><br>${r.difficulty}<br>${r.status}`;
         const b = document.createElement('button');
         b.textContent = lang.btnEnter;
-        b.onclick = () => {
-          loadRoom(r.name);
-        };
+        b.onclick = () => loadRoom(r.name);
         c.appendChild(b);
         grid.appendChild(c);
       });
   }
 
-    // ========== DOOR MODAL ==========
-  function openDoorModal() {
-    const modal = document.getElementById('doorModal');
-    const digitButtons = document.getElementById('digitButtons');
-    
-    // Clear previous buttons
-    digitButtons.innerHTML = '';
-    
-    // Create digit buttons 0-9
-    for (let i = 0; i <= 9; i++) {
-      const btn = document.createElement('button');
-      btn.className = 'digit';
-      btn.textContent = i;
-      
-      // Check if this digit was found
-      if (state.foundDigits.includes(String(i))) {
-        btn.classList.add('digit-found');
-        btn.onclick = () => addDigitToEntry(i);
-      } else {
-        btn.classList.add('digit-disabled');
-        btn.disabled = true;
-      }
-      
-      digitButtons.appendChild(btn);
-    }
-    
-    // Reset entry
-    doorEntry = '';
-    updateDoorDisplay();
-    
-    modal.classList.remove('hidden');
-    modal.style.display = 'flex';
-  }
-
-  function closeDoorModal() {
-    const modal = document.getElementById('doorModal');
-    modal.classList.add('hidden');
-    modal.style.display = 'none';
-    doorEntry = '';
-  }
-
-  function addDigitToEntry(digit) {
-    if (doorEntry.length < 3) {
-      doorEntry += digit;
-      updateDoorDisplay();
-    }
-  }
-
-  function updateDoorDisplay() {
-    const display = document.getElementById('codeDisplay');
-    const filled = doorEntry.split('').join(' ');
-    const remaining = '_ '.repeat(3 - doorEntry.length).trim();
-    display.textContent = filled + (filled ? ' ' : '') + remaining;
-  }
-
-  function clearDoorCode() {
-    doorEntry = '';
-    updateDoorDisplay();
-  }
-
-  function submitDoorCode() {
-    const lang = translations[currentLanguage];
-    
-    if (doorEntry.length < 3) {
-      showModal(lang.msgCodeIs3Digits);
-      return;
-    }
-    
-    if (doorEntry === DOOR_CODE) {
-      doorUnlocked = true;
-      closeDoorModal();
-      const winMsg = currentLanguage === 'en' 
-        ? 'The door unlocks! You can escape!' 
-        : '¡La puerta se desbloquea! ¡Puedes escapar!';
-      showModal(winMsg);
-      setTimeout(() => showScreen('victory'), 1500);
-    } else {
-      showModal(lang.msgIncorrectCode);
-      doorEntry = '';
-      updateDoorDisplay();
-    }
-  }
-
-  // Hotspot editor placeholder functions (keep for compatibility)
-  function loadHotspots() {}
-  function saveHotspots() {}
-  function resetHotspots() {}
-  function toggleHotspotEditor() {}
-  function selectHotspot() {}
-  function nudgeSelected() {}
-
-  // ========== ROOM LOADING ==========
-function loadRoom(roomName) {
-  currentRoom = roomName;
-  const roomData = roomsData[roomName];
-
-  const sceneImage = document.getElementById('sceneImage');
-  sceneImage.src = roomData.image;
-  sceneImage.alt = roomName;
-  
-  time = roomData.time;
-  DOOR_CODE = roomData.code;
-  clues = roomData.clues;
-  paused = false;
-  
-  // Set room title based on language
-  const roomTitle = currentLanguage === 'en' ? roomData.titleEN : roomData.titleES;
-  document.getElementById('roomTitle').textContent = roomTitle;
-  
-  // Update timer display
-  const m = String(Math.floor(time / 60)).padStart(2, '0');
-  const s = String(time % 60).padStart(2, '0');
-  document.getElementById('timer').textContent = `${m}:${s}`;
-  
-  // Change room class for different hotspot layouts
-  const gameView = document.getElementById('gameView');
-  gameView.className = 'game-view ' + roomData.className;
-  
-
-  
-  // Show/hide appropriate hotspot containers
-  document.querySelectorAll('.hotspots-container').forEach(container => {
-    container.classList.add('hidden');
-  });
-  document.getElementById(roomData.hotspotsId).classList.remove('hidden');
-  
-  // Reset state for new room
-  state.inventory = [];
-  state.foundDigits = [];
-  state.selectedItem = null;
-  doorUnlocked = false;
-  doorEntry = '';
-  
-  // Reset all clues
-  Object.keys(clues).forEach(key => {
-    clues[key].found = false;
-  });
-  
-  updateInventory();
-  showScreen('game');
-  startTimer();
-  playRoomMusic();
-}
-
-  // ========== INVENTORY ==========
   function updateInventory() {
     const inv = document.getElementById('invItems');
     inv.innerHTML = '';
-
-    // Add items
     state.inventory.forEach(item => {
       const el = document.createElement('div');
       el.className = 'inv-item';
       el.textContent = item;
-      el.title = item;
-      el.onclick = () => {
-        state.selectedItem = state.selectedItem === item ? null : item;
-        document.querySelectorAll('.inv-item').forEach(i => i.classList.remove('selected'));
-        if (state.selectedItem) {
-          el.classList.add('selected');
-        }
-      };
       inv.appendChild(el);
     });
-
-    // Add found digits as clue badges
     state.foundDigits.forEach(d => {
-      const dEl = document.createElement('div');
-      dEl.className = 'inv-item clue-badge';
-      dEl.textContent = d;
-      dEl.title = (currentLanguage === 'es' ? 'Pista: ' : 'Clue: ') + d;
-      inv.appendChild(dEl);
+      const el = document.createElement('div');
+      el.className = 'inv-item clue-badge';
+      el.textContent = d;
+      inv.appendChild(el);
     });
   }
 
-  // ========== MODALS ==========
   function showModal(text) {
     document.getElementById('modalText').textContent = text;
     document.getElementById('modal').style.display = 'flex';
   }
 
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-  }
+  function closeModal() { document.getElementById('modal').style.display = 'none'; }
+  function toggleFilterMenu() { document.getElementById('filterMenu').classList.toggle('hidden'); }
+  function showControls() { showModal(translations[currentLanguage].msgControls); }
+  function showHowToPlay() { showModal(translations[currentLanguage].msgHowToPlay); }
 
-  // ========== PUZZLE INTERACTIONS ==========
-function interact(spotKey) {
-  const clue = clues[spotKey];
-  if (!clue) return;
-  const lang = translations[currentLanguage];
-
-  if (clue.found) {
-    showModal(lang.msgNothingElse);
-    return;
-  }
-
-  // Special case: Pirate treasure requires all items
-  if (spotKey === 'spot6' && currentRoom === 'Pirate Cove') {
-    const required = ['🗺️', '⚓', '🧭', '🗝️'];
-    const hasAll = required.every(item => state.inventory.includes(item));
-    
-    if (!hasAll) {
-      const missing = [];
-      if (!state.inventory.includes('🗺️')) missing.push(currentLanguage === 'en' ? 'map' : 'mapa');
-      if (!state.inventory.includes('⚓')) missing.push(currentLanguage === 'en' ? 'anchor medallion' : 'medallón de ancla');
-      if (!state.inventory.includes('🧭')) missing.push(currentLanguage === 'en' ? 'compass' : 'brújula');
-      if (!state.inventory.includes('🗝️')) missing.push(currentLanguage === 'en' ? 'key' : 'llave');
-      
-      const message = currentLanguage === 'en'
-        ? `You need to find all the items before you can dig up the treasure! Still missing: ${missing.join(', ')}`
-        : `¡Necesitas encontrar todos los objetos antes de poder desenterrar el tesoro! Aún faltan: ${missing.join(', ')}`;
-      showModal(message);
-      return;
-    }
-    
-    // Has all items - Open treasure and WIN!
-    clue.found = true;
-    doorUnlocked = true;
-    const winMsg = currentLanguage === 'en'
-      ? '🏴‍☠️ You dig up the buried treasure chest and unlock it with the key! Gold, jewels, and ancient artifacts spill out. You\'ve found the legendary pirate treasure!'
-      : '🏴‍☠️ ¡Desentierras el cofre del tesoro y lo abres con la llave! Oro, joyas y artefactos antiguos se derraman. ¡Has encontrado el legendario tesoro pirata!';
-    showModal(winMsg);
-    setTimeout(() => showScreen('victory'), 2000);
-    return;
-  }
-
-  // Special case: Safe requires puzzle piece to open (Mystery Mansion)
-  if (spotKey === 'spot5' && currentRoom === 'Mystery Mansion') {
-    if (!state.inventory.includes('🧩')) {
-      const message = currentLanguage === 'en' 
-        ? 'The safe is locked. You need something to open it...' 
-        : 'La caja fuerte está cerrada. Necesitas algo para abrirla...';
-      showModal(message);
-      return;
-    } else {
-      // Remove puzzle piece from inventory when using it
-      const index = state.inventory.indexOf('🧩');
-      if (index > -1) {
-        state.inventory.splice(index, 1);
-        state.selectedItem = null;
-      }
-    }
-  }
-
-  clue.found = true;
-
-  if (clue.number !== undefined) {
-    state.foundDigits.push(String(clue.number));
-    updateInventory();
-    const message = currentLanguage === 'en' ? clue.messageEN : clue.messageES;
-    showModal(message);
-  } else if (clue.item) {
-    state.inventory.push(clue.item);
-    updateInventory();
-    const message = currentLanguage === 'en' ? clue.messageEN : clue.messageES;
-    showModal(message);
-  }
-}
-
-  // ========== DOOR KEYPAD ==========
-  let doorEntry = '';
-  let doorUnlocked = false;
-
-function tryDoor() {
-  const lang = translations[currentLanguage];
-  const roomData = roomsData[currentRoom];
-  
-  // Pirate Cove - Find treasure chest
-  if (currentRoom === 'Pirate Cove') {
-    const required = ['🗺️', '⚓', '🧭', '🗝️'];
-    const hasAll = required.every(item => state.inventory.includes(item));
-    
-    if (!hasAll) {
-      const missing = [];
-      if (!state.inventory.includes('🗺️')) missing.push(currentLanguage === 'en' ? 'map' : 'mapa');
-      if (!state.inventory.includes('⚓')) missing.push(currentLanguage === 'en' ? 'anchor medallion' : 'medallón de ancla');
-      if (!state.inventory.includes('🧭')) missing.push(currentLanguage === 'en' ? 'compass' : 'brújula');
-      if (!state.inventory.includes('🗝️')) missing.push(currentLanguage === 'en' ? 'key' : 'llave');
-      
-      const message = currentLanguage === 'en'
-        ? `You need to find all the items before you can dig up the treasure! Still missing: ${missing.join(', ')}`
-        : `¡Necesitas encontrar todos los objetos antes de poder desenterrar el tesoro! Aún faltan: ${missing.join(', ')}`;
-      showModal(message);
-      return;
-    }
-    
-    // Has all items - Open treasure and WIN!
-    doorUnlocked = true;
-    const winMsg = currentLanguage === 'en'
-      ? '🏴‍☠️ You dig up the buried treasure chest and unlock it with the key! Gold, jewels, and ancient artifacts spill out. You\'ve found the legendary pirate treasure and can escape with your fortune!'
-      : '🏴‍☠️ ¡Desentierras el cofre del tesoro y lo abres con la llave! Oro, joyas y artefactos antiguos se derraman. ¡Has encontrado el legendario tesoro pirata y puedes escapar con tu fortuna!';
-    showModal(winMsg);
-    setTimeout(() => showScreen('victory'), 2000);
-    return;
-  }
-  
-  // Magical Library - Item collection mechanic
-  if (currentRoom === 'Magical Library') {
-    const required = ['🔮', '🕯️', '📜'];
-    const hasAll = required.every(item => state.inventory.includes(item));
-    
-    if (!hasAll) {
-      const message = currentLanguage === 'en'
-        ? 'The bookshelf won\'t budge. You need to gather the magical artifacts: crystal ball, enchanted candle, and mystical scroll.'
-        : 'La estantería no se mueve. Necesitas reunir los artefactos mágicos: bola de cristal, vela encantada y pergamino místico.';
-      showModal(message);
-      return;
-    }
-    
-    // Has all items - WIN!
-    doorUnlocked = true;
-    const winMsg = currentLanguage === 'en'
-      ? '✨ The magical artifacts resonate! The bookshelf slides away, revealing a secret passage bathed in mystical light!'
-      : '✨ ¡Los artefactos mágicos resuenan! La estantería se desliza, revelando un pasaje secreto bañado en luz mística!';
-    showModal(winMsg);
-    setTimeout(() => showScreen('victory'), 1500);
-    return;
-  }
-  
-  // Standard door with code (Mystery Mansion, Haunted Asylum)
-  if (!doorUnlocked) {
-    if (!state.foundDigits.length) {
-      showModal(lang.msgNeedNumbers);
-      return;
-    }
-    openDoorModal();
-  } else {
-    showModal(lang.msgDoorUnlocked);
-    setTimeout(() => showScreen('victory'), 800);
-  }
-}
-  // ========== SETTINGS FUNCTIONS ==========
-  function showControls() {
-    const lang = translations[currentLanguage];
-    showModal(lang.msgControls);
-  }
-
-  function showHowToPlay() {
-    const lang = translations[currentLanguage];
-    showModal(lang.msgHowToPlay);
-  }
-
-  // ========== INITIALIZATION ==========
-// ========== INITIALIZATION ==========
-loadHotspots();
-renderRooms();
-updateInventory();
-updateLanguage();
-
-// Enable audio playback on first user interaction
-function enableAudioOnInteraction() {
-  if (audioEnabled) {
+  // ========== INIT ==========
+  window.addEventListener('DOMContentLoaded', () => {
+    updateLanguage();
     playMenuMusic();
-  }
-  // Remove listeners after first interaction
-  document.removeEventListener('click', enableAudioOnInteraction);
-  document.removeEventListener('keydown', enableAudioOnInteraction);
-}
-
-document.addEventListener('click', enableAudioOnInteraction);
-document.addEventListener('keydown', enableAudioOnInteraction);
-
-
-  // Hotspot editor placeholder functions (keep for compatibility)
-  function loadHotspots() {}
-  function saveHotspots() {}
-  function resetHotspots() {}
-  function toggleHotspotEditor() {}
-  function selectHotspot() {}
-  function nudgeSelected() {}
+  });
 
 </script>
 </body>
 </html>
+
 
 
 
