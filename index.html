@@ -206,19 +206,12 @@
     /* ========== HOTSPOTS ========== */
     .hotspot {
       position: absolute;
-      background: transparent !important;
-      border: none !important;
+      background: rgba(255, 0, 0, 0.15);
+      border: none;
       cursor: pointer;
       z-index: 50;
       pointer-events: auto;
       transition: none;
-    }
-
-    /* remove any accidental outlines */
-    .hotspot.show-outline,
-    .hotspot.editing {
-      border: none !important;
-      background: transparent !important;
     }
 
     /* Mystery Mansion Hotspots */
@@ -1746,16 +1739,6 @@ document.addEventListener('keydown', enableAudioOnInteraction);
   function selectHotspot() {}
   function nudgeSelected() {}
 
-  function toggleFilterMenu() {
-  const menu = document.getElementById('filterMenu');
-  menu.classList.toggle('hidden');
-}
-
 </script>
 </body>
 </html>
-
-
-
-
-
