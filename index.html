@@ -578,6 +578,7 @@
       max-width: 320px;
       position: relative;
       pointer-events: auto;
+      text-align: center;
     }
 
     .modal-content button {
@@ -717,7 +718,6 @@ button {
 <body>
 <div class="app">
 
-  <!-- ========== MAIN MENU ========== -->
   <section id="main" class="screen active">
     <h1 id="mainTitle">🔑 Escape… if you can!</h1>
     <button onclick="resumeGame()" id="btnCurrentRoom">▶ Current Room</button>
@@ -725,7 +725,6 @@ button {
     <button onclick="showScreen('settings')" id="btnSettings">⚙ Settings</button>
   </section>
 
-  <!-- ========== ROOMS BROWSER ========== -->
   <section id="rooms" class="screen">
     <div class="topbar rooms-topbar">
       <div class="rooms-header">
@@ -767,7 +766,6 @@ button {
     <div id="roomGrid" class="grid" style="margin-top:12px"></div>
   </section>
 
-  <!-- ========== GAME ========== -->
   <section id="game" class="screen">
     <div class="topbar">
       <button class="secondary" onclick="pauseGame()" style="width:44px;height:44px;padding:0;font-size:20px;margin:0;">☰</button>
@@ -779,8 +777,7 @@ button {
       <div class="game-view room-mystery" id="gameView">
         <img id="sceneImage" src="foyer.jpg" alt="Foyer" />
 
-        <!-- Mystery Mansion Hotspots -->
-        <div id="hotspotsMysterv" class="hotspots-container">
+        <div id="hotspotsMystery" class="hotspots-container">
           <button class="hotspot books" title="Inspect books" onclick="interact('spot1')"></button>
           <button class="hotspot painting" title="Inspect painting" onclick="interact('spot2')"></button>
           <button class="hotspot fireplace" title="Inspect fireplace" onclick="interact('spot3')"></button>
@@ -789,7 +786,6 @@ button {
           <button class="hotspot door" title="Try door" onclick="tryDoor()"></button>
         </div>
 
-        <!-- Magical Library Hotspots -->
         <div id="hotspotsLibrary" class="hotspots-container hidden">
           <button class="hotspot crystal" title="Inspect crystal ball" onclick="interact('spot1')"></button>
           <button class="hotspot bookshelf" title="Search bookshelf" onclick="interact('spot2')"></button>
@@ -799,7 +795,6 @@ button {
           <button class="hotspot door" title="Push bookshelf" onclick="tryDoor()"></button>
         </div>
 
-<!-- Pirate Cove Hotspots -->
 <div id="hotspotsPirate" class="hotspots-container hidden">
   <button class="hotspot map" title="Search through papers" onclick="interact('spot1')"></button>
   <button class="hotspot barrel" title="Search barrel" onclick="interact('spot2')"></button>
@@ -809,7 +804,6 @@ button {
   <button class="hotspot door" title="Dig for buried treasure" onclick="interact('spot6')"></button>
 </div>
 
-        <!-- Haunted Asylum Hotspots -->
         <div id="hotspotsAsylum" class="hotspots-container hidden">
           <button class="hotspot bed" title="Search bed" onclick="interact('spot1')"></button>
           <button class="hotspot tv" title="Examine TV" onclick="interact('spot2')"></button>
@@ -827,7 +821,6 @@ button {
     </div>
   </section>
 
-  <!-- ========== VICTORY ========== -->
   <section id="victory" class="screen">
     <h1 id="victoryTitle">🎉 You Escaped!</h1>
     <p id="victoryText">You successfully completed the room!</p>
@@ -835,7 +828,6 @@ button {
     <button onclick="showScreen('main')" id="btnMainMenu">Main Menu</button>
   </section>
 
-  <!-- ========== SETTINGS ========== -->
   <section id="settings" class="screen">
     <h2 id="settingsTitle">Settings</h2>
     <button onclick="toggleAudio()"><span id="btnAudioIcon">🔊</span> <span id="btnAudioText">Audio</span>: <span id="audioStatus">On</span></button>
@@ -846,7 +838,6 @@ button {
   </section>
 </div>
 
-<!-- ========== PAUSE MENU OVERLAY ========== -->
 <div id="menuOverlay" class="menu-overlay">
   <div class="menu">
     <h3 id="pauseTitle">Paused</h3>
@@ -856,8 +847,7 @@ button {
   </div>
 </div>
 
-<!-- ========== DOOR KEYPAD MODAL ========== -->
-<div id="doorModal" class="modal hidden">
+<div id="doorModal" class="modal">
   <div class="modal-content">
     <h3 id="doorModalTitle">Door Keypad</h3>
     <p id="doorModalText">Enter the code by clicking the digits you have found</p>
@@ -871,7 +861,6 @@ button {
   </div>
 </div>
 
-<!-- ========== MESSAGE MODAL ========== -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <p id="modalText"></p>
@@ -879,37 +868,15 @@ button {
   </div>
 </div>
 
-<!-- Menu / Lobby Music -->
 <audio id="menuMusic" loop>
   <source src="mixkit-xanthos-633.mp3" type="audio/mpeg">
 </audio>
 
-<!-- In-Room Music -->
 <audio id="roomMusic" loop>
   <source src="halloween-spooky-eerie-music-416618.mp3" type="audio/mpeg">
 </audio>
 
 
-  <div id="doorModal" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-      <h2 id="doorModalTitle">Door Keypad</h2>
-      <p id="doorModalText">Enter the code by clicking the digits you have found:</p>
-      
-      <div id="codeDisplay" style="font-size: 2rem; background: #000; padding: 10px; margin: 15px 0; letter-spacing: 5px; border: 2px solid var(--accent); color: var(--accent); text-align: center;">
-        _ _ _
-      </div>
-
-      <div id="digitButtons" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
-        </div>
-
-      <div style="display: flex; gap: 10px;">
-        <button onclick="submitDoorCode()" style="background: green; color: white; flex: 1;" id="btnSubmit">Submit</button>
-        <button onclick="clearDoorCode()" style="background: #444; color: white; flex: 1;" id="btnClear">Clear</button>
-      </div>
-      <button onclick="closeDoorModal()" style="margin-top: 10px; background: transparent; border: 1px solid #777;" id="btnCloseDoor">Close</button>
-    </div>
-  </div>
-  
 <script>
 
 // ========== LANGUAGE SYSTEM ==========
@@ -1112,26 +1079,33 @@ button {
   }
 
   // ========== DATA & STATE ==========
+  const state = {
+    inventory: [],
+    foundDigits: [],
+    time: 0,
+    interval: null
+  };
+
   const roomsData = {
     'Mystery Mansion': {
       titleEN: 'Mystery Mansion — Foyer',
       titleES: 'Mansión Misteriosa — Vestíbulo',
       className: 'room-mystery',
-      hotspotsId: 'hotspotsMysterv',
+      hotspotsId: 'hotspotsMystery',
       image: 'images/foyer.jpg', 
       time: 300,
       code: '042',
       clues: {
         spot1: { number: 2, found: false, messageEN: 'You found a number hidden inside an old book!', messageES: '¡Encontraste un número escondido dentro de un libro viejo!' },
         spot2: { number: 0, found: false, messageEN: 'Behind the painting, a number is scratched into the wall!', messageES: '¡Detrás de la pintura, un número está grabado en la pared!' },
-        spot3: { item: '🧩', found: false, messageEN: 'You find a metal code plate! Might be useful for the safe.', messageES: '¡Encuentras una placa de código metálica! Útil para la caja fuerte.' },
+        spot3: { item: '🧩', found: false, messageEN: 'You find a metal code plate!', messageES: '¡Encuentras una placa de código metálica!' },
         spot4: { number: 4, found: false, messageEN: 'Under the rug, you discover a number carved into the floor!', messageES: '¡Bajo la alfombra, descubres un número tallado en el suelo!' },
-        spot5: { item: '🔐', found: false, messageEN: 'The safe opens! Inside is a heavy brass key.', messageES: '¡La caja fuerte se abre! Dentro hay una llave de latón.' }
+        spot5: { item: '🔐', found: false, messageEN: 'The safe opens!', messageES: '¡La caja abierta!' }
       }
     },
     'Magical Library': {
-      titleEN: 'Magical Library — Reading Room',
-      titleES: 'Biblioteca Mágica — Sala de Lectura',
+      titleEN: 'Magical Library',
+      titleES: 'Biblioteca Mágica',
       className: 'room-library',
       hotspotsId: 'hotspotsLibrary',
       image: 'images/library.png',
@@ -1139,281 +1113,229 @@ button {
       code: 'none',
       requiresItems: ['🔮', '🕯️', '📜'],
       clues: {
-        spot1: { item: '🔮', found: false, messageEN: 'The crystal ball pulses with energy!', messageES: '¡La bola de cristal pulsa con energía!' },
-        spot2: { item: '📚', found: false, messageEN: 'You find an ancient book about secret doors.', messageES: 'Encuentras un libro antiguo sobre puertas secretas.' },
-        spot3: { item: '🕯️', found: false, messageEN: 'An enchanted candle!', messageES: '¡Una vela encantada!' },
-        spot4: { item: '📜', found: false, messageEN: 'A mystical scroll with symbols.', messageES: 'Un pergamino místico con símbolos.' },
-        spot5: { item: '✨', found: false, messageEN: 'A vial of stardust!', messageES: '¡Un frasco de polvo de estrellas!' }
+        spot1: { item: '🔮', messageEN: 'Crystal Ball found!', messageES: '¡Bola de cristal!' },
+        spot2: { item: '📚', messageEN: 'Ancient Tome!', messageES: '¡Tomo antiguo!' },
+        spot3: { item: '🕯️', messageEN: 'Magic Candle!', messageES: '¡Vela mágica!' },
+        spot4: { item: '📜', messageEN: 'Magic Scroll!', messageES: '¡Pergamino!' },
+        spot5: { item: '✨', messageEN: 'Stardust!', messageES: '¡Polvo estelar!' }
       }
     },
     'Pirate Cove': {
-      titleEN: 'Pirate Cove — Captain\'s Quarters',
-      titleES: 'Cala de Piratas — Camarote del Capitán',
+      titleEN: 'Pirate Cove',
+      titleES: 'Cala de Piratas',
       className: 'room-pirate',
       hotspotsId: 'hotspotsPirate',
       image: 'images/pirate.jpg',
       time: 360,
-      code: 'treasure',
+      code: 'none',
       requiresItems: ['🗺️', '⚓', '🧭', '🗝️'],
       clues: {
-        spot1: { item: '🗺️', found: false, messageEN: 'An old treasure map!', messageES: '¡Un viejo mapa del tesoro!' },
-        spot2: { item: '🍺', found: false, messageEN: 'A bottle of rum.', messageES: 'Una botella de ron.' },
-        spot3: { item: '🧭', found: false, messageEN: 'A compass hidden in a crate!', messageES: '¡Una brújula en una caja!' },
-        spot4: { item: '⚓', found: false, messageEN: 'A golden anchor medallion!', messageES: '¡Un medallón de ancla dorado!' },
-        spot5: { item: '🗝️', found: false, messageEN: 'A rusty key hidden in driftwood!', messageES: '¡Una llave oxidada en la madera!' }
+        spot1: { item: '🗺️', messageEN: 'Treasure Map!', messageES: '¡Mapa del tesoro!' },
+        spot2: { item: '🍺', messageEN: 'Old Rum!', messageES: '¡Ron antiguo!' },
+        spot3: { item: '🧭', messageEN: 'Compass!', messageES: '¡Brújula!' },
+        spot4: { item: '⚓', messageEN: 'Golden Anchor!', messageES: '¡Ancla de oro!' },
+        spot5: { item: '🗝️', messageEN: 'Rusty Key!', messageES: '¡Llave oxidada!' }
       }
     },
     'Haunted Asylum': {
-      titleEN: 'Haunted Asylum — Abandoned Ward',
-      titleES: 'Asilo Embrujado — Pabellón Abandonado',
+      titleEN: 'Haunted Asylum',
+      titleES: 'Asilo Embrujado',
       className: 'room-asylum',
       hotspotsId: 'hotspotsAsylum',
       image: 'images/asylum.jpg',
       time: 420,
       code: '138',
       clues: {
-        spot1: { number: 1, found: false, messageEN: 'You find patient record #1.', messageES: 'Encuentras el registro de paciente #1.' },
-        spot2: { item: '📺', found: false, messageEN: 'The TV flickers static.', messageES: 'La TV parpadea estática.' },
-        spot3: { number: 3, found: false, messageEN: 'The number 3 is written on the TV.', messageES: 'El número 3 está escrito en la TV.' },
-        spot4: { item: '💊', found: false, messageEN: 'Old medicine bottles.', messageES: 'Viejos frascos de medicina.' },
-        spot5: { number: 8, found: false, messageEN: 'Scratched marks counting to 8.', messageES: 'Marcas que cuentan hasta 8.' }
+        spot1: { number: 1, messageEN: 'Found number 1!', messageES: '¡Número 1!' },
+        spot2: { item: '📺', messageEN: 'TV Static...', messageES: 'Estática...' },
+        spot3: { number: 3, messageEN: 'Found number 3!', messageES: '¡Número 3!' },
+        spot4: { item: '💊', messageEN: 'Medicine!', messageES: '¡Medicina!' },
+        spot5: { number: 8, messageEN: 'Found number 8!', messageES: '¡Número 8!' }
       }
     }
   };
 
   const rooms = [
-    { name: 'Mystery Mansion', difficulty: 'Medium', status: 'progress' },
-    { name: 'Magical Library', difficulty: 'Easy', status: 'done' },
-    { name: 'Pirate Cove', difficulty: 'Medium', status: 'new' },
-    { name: 'Haunted Asylum', difficulty: 'Hard', status: 'new' }
+    { name: 'Mystery Mansion', difficulty: 'Medium' },
+    { name: 'Magical Library', difficulty: 'Easy' },
+    { name: 'Pirate Cove', difficulty: 'Medium' },
+    { name: 'Haunted Asylum', difficulty: 'Hard' }
   ];
 
-  let time = 300;
-  let interval = null;
-  let paused = true;
   let currentRoom = 'Mystery Mansion';
   let doorEntry = '';
-  let doorUnlocked = false;
-  let DOOR_CODE = '042';
-  let clues = roomsData['Mystery Mansion'].clues;
 
-  const state = {
-    inventory: [],
-    foundDigits: [],
-    selectedItem: null
-  };
+  // ========== GAME LOGIC ==========
 
-  // ========== CORE NAVIGATION ==========
   function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    if (['main', 'rooms', 'settings', 'victory'].includes(id)) playMenuMusic();
-    else if (id === 'game') playRoomMusic();
   }
 
-  function loadRoom(roomName) {
-    currentRoom = roomName;
-    const roomData = roomsData[roomName];
-    document.getElementById('sceneImage').src = roomData.image;
-    time = roomData.time;
-    DOOR_CODE = roomData.code;
-    clues = roomData.clues;
-    paused = false;
-    document.getElementById('roomTitle').textContent = currentLanguage === 'en' ? roomData.titleEN : roomData.titleES;
-    document.getElementById('gameView').className = 'game-view ' + roomData.className;
+  function renderRooms() {
+    const grid = document.getElementById('roomGrid');
+    grid.innerHTML = '';
+    const search = document.getElementById('search').value.toLowerCase();
+    rooms.filter(r => r.name.toLowerCase().includes(search)).forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<strong>${r.name}</strong><br>Difficulty: ${r.difficulty}`;
+      const btn = document.createElement('button');
+      btn.textContent = translations[currentLanguage].btnEnter;
+      btn.onclick = () => loadRoom(r.name);
+      card.appendChild(btn);
+      grid.appendChild(card);
+    });
+  }
+
+  function loadRoom(name) {
+    currentRoom = name;
+    const data = roomsData[name];
+    document.getElementById('sceneImage').src = data.image;
+    document.getElementById('roomTitle').textContent = currentLanguage === 'en' ? data.titleEN : data.titleES;
+    
     document.querySelectorAll('.hotspots-container').forEach(c => c.classList.add('hidden'));
-    document.getElementById(roomData.hotspotsId).classList.remove('hidden');
+    document.getElementById(data.hotspotsId).classList.remove('hidden');
+    document.getElementById('gameView').className = 'game-view ' + data.className;
+
+    state.time = data.time;
     state.inventory = [];
     state.foundDigits = [];
-    state.selectedItem = null;
-    doorUnlocked = false;
     doorEntry = '';
-    Object.keys(clues).forEach(k => clues[k].found = false);
+    
     updateInventory();
     showScreen('game');
     startTimer();
+    playRoomMusic();
   }
 
-  function pauseGame() {
-    paused = true;
-    stopTimer();
-    document.getElementById('game').classList.add('paused');
-    document.getElementById('menuOverlay').style.display = 'flex';
-  }
-
-  function resumeGame() {
-    closeMenu();
-    document.getElementById('game').classList.remove('paused');
-    showScreen('game');
-    if (paused) { paused = false; startTimer(); }
-  }
-
-  function closeMenu() { document.getElementById('menuOverlay').style.display = 'none'; }
-
-  function startTimer() {
-    clearInterval(interval);
-    interval = setInterval(() => {
-      if (time <= 0) { clearInterval(interval); alert("Time's up!"); showScreen('main'); return; }
-      time--;
-      const m = String(Math.floor(time / 60)).padStart(2, '0');
-      const s = String(time % 60).padStart(2, '0');
-      document.getElementById('timer').textContent = `${m}:${s}`;
-    }, 1000);
-  }
-  function stopTimer() { clearInterval(interval); }
-
-  // ========== INTERACTIONS ==========
   function interact(spotKey) {
-    const clue = clues[spotKey];
+    const data = roomsData[currentRoom];
+    const clue = data.clues[spotKey];
     if (!clue) return;
-    if (clue.found) { showModal(translations[currentLanguage].msgNothingElse); return; }
 
-    // Mystery Mansion Safe Logic
-    if (spotKey === 'spot5' && currentRoom === 'Mystery Mansion' && !state.inventory.includes('🧩')) {
-      showModal(currentLanguage === 'en' ? 'The safe is locked. You need a code plate.' : 'La caja fuerte está cerrada.');
-      return;
-    }
-
-    clue.found = true;
     if (clue.number !== undefined) {
-      state.foundDigits.push(String(clue.number));
+      if (!state.foundDigits.includes(String(clue.number))) {
+        state.foundDigits.push(String(clue.number));
+      }
     } else if (clue.item) {
-      state.inventory.push(clue.item);
+      if (!state.inventory.includes(clue.item)) {
+        state.inventory.push(clue.item);
+      }
     }
+    showModal(currentLanguage === 'en' ? (clue.messageEN || "Clue found!") : (clue.messageES || "Pista encontrada!"));
     updateInventory();
-    showModal(currentLanguage === 'en' ? clue.messageEN : clue.messageES);
   }
 
   function tryDoor() {
-    const lang = translations[currentLanguage];
-    const roomData = roomsData[currentRoom];
-
-    // Room Exit Logic
-    if (currentRoom === 'Magical Library') {
-      const hasAll = roomData.requiresItems.every(i => state.inventory.includes(i));
-      if (!hasAll) { showModal(currentLanguage === 'en' ? 'The bookshelf won\'t move. Collect the Crystal, Candle, and Scroll.' : 'La estantería no se mueve.'); return; }
-      winRoom();
-    } else if (currentRoom === 'Pirate Cove') {
-      const hasAll = roomData.requiresItems.every(i => state.inventory.includes(i));
-      if (!hasAll) { showModal(currentLanguage === 'en' ? 'You need the Map, Anchor, Compass, and Key to find the treasure.' : 'Necesitas los objetos del pirata.'); return; }
-      winRoom();
+    const data = roomsData[currentRoom];
+    if (data.requiresItems) {
+      const hasAll = data.requiresItems.every(i => state.inventory.includes(i));
+      if (hasAll) showScreen('victory');
+      else showModal(currentLanguage === 'en' ? "Missing items!" : "¡Faltan objetos!");
     } else {
-      // Keypad Rooms
-      if (doorUnlocked) winRoom();
-      else if (state.foundDigits.length === 0) showModal(lang.msgNeedNumbers);
-      else openDoorModal();
+      if (state.foundDigits.length === 0) {
+        showModal(translations[currentLanguage].msgNeedNumbers);
+      } else {
+        openDoorModal();
+      }
     }
   }
 
-  function winRoom() {
-    showScreen('victory');
-    stopTimer();
-  }
-
-  // ========== KEYPAD MODAL ==========
   function openDoorModal() {
-    const modal = document.getElementById('doorModal');
-    modal.classList.remove('hidden');
-    modal.style.display = 'flex';
     doorEntry = '';
     updateCodeDisplay();
-    renderDigitButtons();
-  }
-
-  function closeDoorModal() {
-    document.getElementById('doorModal').style.display = 'none';
-  }
-
-  function renderDigitButtons() {
-    const container = document.getElementById('digitButtons');
-    container.innerHTML = '';
-    for (let i = 0; i <= 9; i++) {
+    const btnContainer = document.getElementById('digitButtons');
+    btnContainer.innerHTML = '';
+    
+    // Sort and generate buttons for found digits
+    state.foundDigits.sort().forEach(d => {
       const btn = document.createElement('button');
-      btn.className = 'digit';
-      btn.textContent = i;
-      if (!state.foundDigits.includes(String(i))) {
-        btn.classList.add('digit-disabled');
-        btn.disabled = true;
-      } else {
-        btn.onclick = () => { if (doorEntry.length < 3) { doorEntry += i; updateCodeDisplay(); }};
-      }
-      container.appendChild(btn);
-    }
+      btn.className = 'digit digit-found';
+      btn.textContent = d;
+      btn.onclick = () => {
+        if (doorEntry.length < 3) {
+          doorEntry += d;
+          updateCodeDisplay();
+        }
+      };
+      btnContainer.appendChild(btn);
+    });
+    
+    document.getElementById('doorModal').style.display = 'flex';
   }
 
   function updateCodeDisplay() {
-    document.getElementById('codeDisplay').textContent = doorEntry.padEnd(3, '_').split('').join(' ');
+    document.getElementById('codeDisplay').textContent = doorEntry.split('').join(' ').padEnd(5, ' _');
   }
 
-  function clearDoorCode() { doorEntry = ''; updateCodeDisplay(); }
-
   function submitDoorCode() {
-    if (doorEntry === DOOR_CODE) {
-      doorUnlocked = true;
+    const data = roomsData[currentRoom];
+    if (doorEntry === data.code) {
       closeDoorModal();
-      showModal(currentLanguage === 'en' ? 'Correct! The door is open.' : '¡Correcto!');
+      showScreen('victory');
     } else {
       showModal(translations[currentLanguage].msgIncorrectCode);
       clearDoorCode();
     }
   }
 
-  // ========== UI UPDATES ==========
-  function renderRooms() {
-    const grid = document.getElementById('roomGrid');
-    grid.innerHTML = '';
-    const s = document.getElementById('search').value.toLowerCase();
-    const d = document.getElementById('difficulty').value;
-    const st = document.getElementById('status').value;
-    const lang = translations[currentLanguage];
+  function clearDoorCode() {
+    doorEntry = '';
+    updateCodeDisplay();
+  }
 
-    rooms.filter(r => (!s || r.name.toLowerCase().includes(s)) && (!d || r.difficulty === d) && (!st || r.status === st))
-      .forEach(r => {
-        const c = document.createElement('div');
-        c.className = 'card';
-        const name = currentLanguage === 'es' ? (lang['room' + r.name.replace(/\s+/g, '')] || r.name) : r.name;
-        c.innerHTML = `<strong>${name}</strong><br>${r.difficulty}<br>${r.status}`;
-        const b = document.createElement('button');
-        b.textContent = lang.btnEnter;
-        b.onclick = () => loadRoom(r.name);
-        c.appendChild(b);
-        grid.appendChild(c);
-      });
+  function closeDoorModal() {
+    document.getElementById('doorModal').style.display = 'none';
   }
 
   function updateInventory() {
-    const inv = document.getElementById('invItems');
-    inv.innerHTML = '';
-    state.inventory.forEach(item => {
-      const el = document.createElement('div');
-      el.className = 'inv-item';
-      el.textContent = item;
-      inv.appendChild(el);
+    const container = document.getElementById('invItems');
+    container.innerHTML = '';
+    state.inventory.forEach(i => {
+      const div = document.createElement('div');
+      div.className = 'inv-item';
+      div.textContent = i;
+      container.appendChild(div);
     });
     state.foundDigits.forEach(d => {
-      const el = document.createElement('div');
-      el.className = 'inv-item clue-badge';
-      el.textContent = d;
-      inv.appendChild(el);
+      const div = document.createElement('div');
+      div.className = 'clue-badge';
+      div.textContent = d;
+      container.appendChild(div);
     });
   }
 
-  function showModal(text) {
-    document.getElementById('modalText').textContent = text;
-    document.getElementById('modal').style.display = 'flex';
+  function startTimer() {
+    clearInterval(state.interval);
+    state.interval = setInterval(() => {
+      state.time--;
+      if (state.time <= 0) { clearInterval(state.interval); showScreen('main'); }
+      const m = Math.floor(state.time / 60);
+      const s = state.time % 60;
+      document.getElementById('timer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }, 1000);
   }
 
+  function pauseGame() {
+    document.getElementById('menuOverlay').style.display = 'flex';
+    clearInterval(state.interval);
+  }
+
+  function resumeGame() {
+    if (document.getElementById('game').classList.contains('active')) startTimer();
+    closeMenu();
+  }
+
+  function closeMenu() { document.getElementById('menuOverlay').style.display = 'none'; }
+  function showModal(t) { document.getElementById('modalText').textContent = t; document.getElementById('modal').style.display = 'flex'; }
   function closeModal() { document.getElementById('modal').style.display = 'none'; }
   function toggleFilterMenu() { document.getElementById('filterMenu').classList.toggle('hidden'); }
   function showControls() { showModal(translations[currentLanguage].msgControls); }
   function showHowToPlay() { showModal(translations[currentLanguage].msgHowToPlay); }
 
-  // ========== INIT ==========
-  window.addEventListener('DOMContentLoaded', () => {
-    updateLanguage();
-    playMenuMusic();
-  });
-
+  // Initial render
+  updateLanguage();
 </script>
 </body>
 </html>
