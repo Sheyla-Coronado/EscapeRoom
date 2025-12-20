@@ -206,7 +206,7 @@
     /* ========== HOTSPOTS ========== */
     .hotspot {
       position: absolute;
-      background: rgba(255, 0, 0, 0.15);
+      background: transparent;
       border: none;
       cursor: pointer;
       z-index: 50;
@@ -502,7 +502,7 @@
     #digitButtons .digit.digit-found {
       background: #fff;
       color: #111;
-      font-weight: 600;
+      font-weight: normal;
       border: 1px solid #ddd;
     }
 
@@ -842,6 +842,8 @@ button {
     </div>
   </div>
 </div>
+
+
 
 <!-- ========== MESSAGE MODAL ========== -->
 <div id="modal" class="modal">
@@ -1553,6 +1555,48 @@ function loadRoom(roomName) {
     document.getElementById('modal').style.display = 'none';
   }
 
+function openDoorModal() {
+  doorEntry = '';
+  updateCodeDisplay();
+  renderDoorKeypad();
+
+  const modal = document.getElementById('doorModal');
+  modal.classList.remove('hidden');
+  modal.style.display = 'flex';
+}
+
+function clearDoorCode() {
+  doorEntry = '';
+  updateCodeDisplay();
+}
+
+function submitDoorCode() {
+  const lang = translations[currentLanguage];
+
+  if (doorEntry.length !== 3) {
+    showModal(lang.msgCodeIs3Digits);
+    return;
+  }
+
+  if (doorEntry === DOOR_CODE) {
+    doorUnlocked = true;
+    closeDoorModal();
+    showModal(lang.msgDoorUnlocked);
+    setTimeout(() => showScreen('victory'), 800);
+  } else {
+    doorEntry = '';
+    updateCodeDisplay();
+    showModal(lang.msgIncorrectCode);
+  }
+}
+
+
+function closeDoorModal() {
+  const modal = document.getElementById('doorModal');
+  modal.style.display = 'none';
+  modal.classList.add('hidden');
+}
+
   // ========== PUZZLE INTERACTIONS ==========
 function interact(spotKey) {
   const clue = clues[spotKey];
@@ -1630,6 +1674,38 @@ function interact(spotKey) {
   // ========== DOOR KEYPAD ==========
   let doorEntry = '';
   let doorUnlocked = false;
+
+function renderDoorKeypad() {
+  const container = document.getElementById('digitButtons');
+  container.innerHTML = '';
+
+  // Display digits from 0–9
+  for (let digit = 0; digit <= 9; digit++) {
+    const btn = document.createElement('button');
+    btn.className = 'digit digit-found';
+    btn.textContent = digit;
+
+    btn.onclick = () => {
+      if (doorEntry.length >= 3) {
+        showModal(translations[currentLanguage].msgCodeIs3Digits);
+        return;
+      }
+
+      doorEntry += digit;
+      updateCodeDisplay();
+    };
+
+    container.appendChild(btn);
+  }
+}
+
+
+
+function updateCodeDisplay() {
+  const display = document.getElementById('codeDisplay');
+  display.textContent = doorEntry.padEnd(3, '_').split('').join(' ');
+}
+
 
 function tryDoor() {
   const lang = translations[currentLanguage];
@@ -1793,8 +1869,12 @@ document.addEventListener('keydown', enableAudioOnInteraction);
   function selectHotspot() {}
   function nudgeSelected() {}
 
+  function toggleFilterMenu() {
+  const menu = document.getElementById('filterMenu');
+  menu.classList.toggle('hidden');
+}
+
 </script>
 </body>
 </html>
-
 
