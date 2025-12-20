@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Escape… if you can!</title>
   <style>
+
+    .digit {
+      padding: 15px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid #555;
+    }
+    .digit-found {
+      background: var(--accent);
+      color: black;
+      font-weight: bold;
+    }
+    .digit-disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    
     /* ========== VARIABLES ========== */
     :root {
       --bg: #1e1e2f;
@@ -867,6 +888,28 @@ button {
 <audio id="roomMusic" loop>
   <source src="halloween-spooky-eerie-music-416618.mp3" type="audio/mpeg">
 </audio>
+
+
+  <div id="doorModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <h2 id="doorModalTitle">Door Keypad</h2>
+      <p id="doorModalText">Enter the code by clicking the digits you have found:</p>
+      
+      <div id="codeDisplay" style="font-size: 2rem; background: #000; padding: 10px; margin: 15px 0; letter-spacing: 5px; border: 2px solid var(--accent); color: var(--accent); text-align: center;">
+        _ _ _
+      </div>
+
+      <div id="digitButtons" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
+        </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button onclick="submitDoorCode()" style="background: green; color: white; flex: 1;" id="btnSubmit">Submit</button>
+        <button onclick="clearDoorCode()" style="background: #444; color: white; flex: 1;" id="btnClear">Clear</button>
+      </div>
+      <button onclick="closeDoorModal()" style="margin-top: 10px; background: transparent; border: 1px solid #777;" id="btnCloseDoor">Close</button>
+    </div>
+  </div>
+  
 <script>
 
 // ========== LANGUAGE SYSTEM ==========
@@ -1374,6 +1417,7 @@ button {
 </script>
 </body>
 </html>
+
 
 
 
