@@ -871,6 +871,14 @@ button {
   </div>
 </div>
 
+<!-- ========== MESSAGE MODAL ========== -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <p id="modalText"></p>
+    <button onclick="closeModal()" id="btnOK">OK</button>
+  </div>
+</div>
+
 <!-- Menu / Lobby Music -->
 <audio id="menuMusic" loop>
   <source src="mixkit-xanthos-633.mp3" type="audio/mpeg">
@@ -882,25 +890,25 @@ button {
 </audio>
 
 
-<div id="doorModal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); align-items: center; justify-content: center; z-index: 3000;">
-  <div class="modal-content" style="background: var(--panel); padding: 20px; border-radius: 12px; width: 300px; text-align: center;">
-    <h2 id="doorModalTitle" style="margin-top:0;">Door Keypad</h2>
-    <p id="doorModalText" style="font-size: 0.9rem;">Enter the 3-digit code:</p>
-    
-    <div id="codeDisplay" style="font-size: 2rem; background: #000; padding: 10px; margin: 15px 0; letter-spacing: 5px; border: 2px solid var(--accent); color: var(--accent); text-align: center; font-family: monospace;">
-      _ _ _
-    </div>
+  <div id="doorModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <h2 id="doorModalTitle">Door Keypad</h2>
+      <p id="doorModalText">Enter the code by clicking the digits you have found:</p>
+      
+      <div id="codeDisplay" style="font-size: 2rem; background: #000; padding: 10px; margin: 15px 0; letter-spacing: 5px; border: 2px solid var(--accent); color: var(--accent); text-align: center;">
+        _ _ _
+      </div>
 
-    <div id="digitButtons" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
-    </div>
+      <div id="digitButtons" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
+        </div>
 
-    <div style="display: flex; gap: 10px;">
-      <button onclick="submitDoorCode()" style="background: #28a745; color: white; flex: 1; padding: 10px;" id="btnSubmit">Submit</button>
-      <button onclick="clearDoorCode()" style="background: #444; color: white; flex: 1; padding: 10px;" id="btnClear">Clear</button>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="submitDoorCode()" style="background: green; color: white; flex: 1;" id="btnSubmit">Submit</button>
+        <button onclick="clearDoorCode()" style="background: #444; color: white; flex: 1;" id="btnClear">Clear</button>
+      </div>
+      <button onclick="closeDoorModal()" style="margin-top: 10px; background: transparent; border: 1px solid #777;" id="btnCloseDoor">Close</button>
     </div>
-    <button onclick="closeDoorModal()" style="margin-top: 10px; background: transparent; border: 1px solid #777; color: white; width: 100%;" id="btnCloseDoor">Close</button>
   </div>
-</div>
   
 <script>
 
@@ -1409,13 +1417,3 @@ button {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
